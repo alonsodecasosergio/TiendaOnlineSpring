@@ -11,6 +11,6 @@ public class InitialController {
 	@GetMapping("")
 	public String alta() {
 		
-		return "index";
+		return "utils/header";
 	}
 }
