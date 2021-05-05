@@ -19,8 +19,6 @@ public class LoginController {
 	@PostMapping("validaracceso")
 	public String validar(@RequestParam String login, @RequestParam String password) {
 		
-		System.out.println(login + password);
-		
 		return "index";
 	}
 }
