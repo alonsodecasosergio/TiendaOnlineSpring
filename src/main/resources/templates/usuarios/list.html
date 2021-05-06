@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lista Usuarios</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	</head>
+	<body>			
+		<div style="margin:5%;">
+		<button type="button" class="btn btn-success">Añadir Usuario</button>
+		<form action="" method="post">
+			<table class="table table-striped" border="2">
+			<thead class="table-dark">
+				<th>Id</th>
+				    <th>Rol</th>
+				    <th>Email</th>
+				    <th>Clave</th>
+				    <th>Nombre</th>
+				    <th>Primer Apellido</th>
+				    <th>Segundo Apellido</th>
+				    <th>Direccion</th>
+				    <th>Localidad</th>
+				    <th>Provincia</th>
+				    <th>Telefono</th>
+				    <th>DNI</th>
+				    <th></th>
+				    <th></th>
+  			</thead>
+			        <tr th:each="usuario : ${usuarios}">
+			        
+			        	<td th:text="${usuario.id}">ID</c:out></td>
+			            <td th:text="${usuario.rol}">Rol</c:out></td>
+			            <td th:text="${usuario.email}">Email</c:out></td>
+			            <td th:text="${usuario.clave}">Clave</c:out></td>
+			            <td th:text="${usuario.nombre}">Nombre</c:out></td>
+			            <td th:text="${usuario.apellido1}">Apellido1</c:out></td>
+			            <td th:text="${usuario.apellido2}">Apellido2</c:out></td>
+			            <td th:text="${usuario.direccion}">Direccion</c:out></td>
+			            <td th:text="${usuario.localidad}">Localidad</c:out></td>		
+			            <td th:text="${usuario.provincia}">Provincia</c:out></td>
+			            <td th:text="${usuario.telefono}">Telefono</c:out></td>
+			            <td th:text="${usuario.dni}">DNI</c:out></td>
+			            <td><a href="#"><button class="btn btn-outline-info">Modificar</button></a></td>      
+			            <td><a href="#"><button class="btn btn-outline-danger">Eliminar</button></a></td> 
+			        </tr>
+			</table>
+		</form>
+		</div>		
+	</body>
+</html>
