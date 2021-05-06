@@ -1,5 +1,10 @@
 package com.tienda.model.Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario implements java.io.Serializable {
 
 	/**
@@ -7,6 +12,8 @@ public class Usuario implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private int rol;
 	private String email;
