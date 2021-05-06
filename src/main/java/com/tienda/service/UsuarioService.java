@@ -12,6 +12,9 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 	
+	public Iterable<Usuario> getAll(){
+		return repository.findAll();
+	}
 	
 	public Usuario getUsuario(int id) {
 		
@@ -42,5 +45,12 @@ public class UsuarioService {
 		user = null;
 		
 		return user;
+	}
+	
+	public void addUsuario(Usuario user) {
+		
+		user.setClave(UtilService.encryptedPassword(user.getClave()));
+		
+		repository.save(user);
 	}
 }

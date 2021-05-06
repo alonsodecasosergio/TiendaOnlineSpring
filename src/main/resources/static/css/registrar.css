@@ -556,6 +556,14 @@ input {
   display: none;
 }
 
+#select{
+	 outline: none;
+  border: none;
+  height: 50px;
+  background: #fafafa;
+  width:100%;
+}
+
 .rs-select2 .select2-container .select2-selection--single .select2-selection__arrow:after {
   font-family: "Material-Design-Iconic-Font";
   content: '\f2f9';

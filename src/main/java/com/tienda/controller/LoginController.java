@@ -1,5 +1,9 @@
 package com.tienda.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tienda.model.Entities.Usuario;
 import com.tienda.service.UsuarioService;
+import com.tienda.service.UtilService;
 
 @Controller
 @RequestMapping("/login")
@@ -26,9 +31,10 @@ public class LoginController {
 	}
 	
 	@PostMapping("/acceso/validar")
-	public String validarAcceso(Model model, @RequestParam(required = true) String login, @RequestParam(required = true) String password) {
+	public String validarAcceso(HttpSession sesion, Model model, @RequestParam(required = true) String login, @RequestParam(required = true) String password) {
 		
 		Usuario user = us.validarLogin(login, password);
+		sesion.setAttribute("usuario", user);
 		
 		if(user != null) {
 			
@@ -47,6 +53,12 @@ public class LoginController {
 	public String registrar(Model model) {
 		
 		model.addAttribute("usuario", new Usuario());
+		try {
+			model.addAttribute("provincias", UtilService.getAllProvincias());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "login/registrar";
 	}
@@ -55,9 +67,9 @@ public class LoginController {
 	public String registrarValidar(Model model, @ModelAttribute Usuario usuario) {
 		
 		usuario.setRol(3);
-		System.out.println(usuario.toString());
+		us.addUsuario(usuario);
 		
-		return "login/login";
+		return "redirect:/login/acceso";
 		
 	}
 }

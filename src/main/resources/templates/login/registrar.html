@@ -5,8 +5,7 @@
 	<title>Registrar | Tienda</title>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Main CSS-->
+	
     <link rel="stylesheet" th:href="@{/css/registrar.css}">
 </head>
 <body>
@@ -72,7 +71,9 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Provincia</label>
-                                    <input class="input--style-4" type="text" name="provincia">
+		                                <select class="input--style-4" id="select" name="provincia" required>
+                                    		<option th:each="provincia : ${provincias}" th:value="${provincia}" th:text="${provincia}">aa</option>
+                                    	</select>
                                 </div>
                             </div>
                         </div>

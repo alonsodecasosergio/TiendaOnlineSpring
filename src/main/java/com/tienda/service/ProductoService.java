@@ -1,5 +1,18 @@
 package com.tienda.service;
 
-public class ProductoService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.tienda.model.Entities.Producto;
+import com.tienda.repository.ProductoRepository;
+
+@Service
+public class ProductoService {
+	
+	@Autowired
+	private ProductoRepository repository;
+	
+	public Iterable<Producto> getAll() {
+        return repository.findAll();
+    }
 }
