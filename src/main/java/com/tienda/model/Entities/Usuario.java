@@ -1,10 +1,13 @@
 package com.tienda.model.Entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario implements java.io.Serializable {
 
 	/**
@@ -15,16 +18,38 @@ public class Usuario implements java.io.Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	
+	@Column(name="id_rol")
 	private int rol;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "clave")
 	private String clave;
+	
+	@Column(name = "nombre")
 	private String nombre;
+	
+	@Column(name = "apellido1")
 	private String apellido1;
+	
+	@Column(name = "apellido2")
 	private String apellido2;
+	
+	@Column(name = "direccion")
 	private String direccion;
+	
+	@Column(name = "localidad")
 	private String localidad;
+	
+	@Column(name = "provincia")
 	private String provincia;
+	
+	@Column(name = "telefono")
 	private String telefono;
+	
+	@Column(name = "dni")
 	private String dni;
 
 	public Usuario() {

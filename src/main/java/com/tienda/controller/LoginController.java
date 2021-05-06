@@ -1,5 +1,6 @@
 package com.tienda.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,15 +10,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tienda.model.Entities.Usuario;
+import com.tienda.service.UsuarioService;
 
 @Controller
-@RequestMapping("login")
+@RequestMapping("/login")
 public class LoginController {
 	
-	@GetMapping("acceso")
+	@Autowired
+	private UsuarioService us;
+	
+	@GetMapping("/acceso")
 	public String acceso() {
 		
 		return "login/login";
+	}
+	
+	@PostMapping("/acceso/validar")
+	public String validarAcceso(Model model, @RequestParam(required = true) String login, @RequestParam(required = true) String password) {
+		
+		Usuario user = us.validarLogin(login, password);
+		
+		if(user != null) {
+			
+			return "redirect:/";
+			
+		}else {
+			
+			return "login/login";
+		}
+		
+		
+		
 	}
 	
 	@GetMapping("registrar")
@@ -36,13 +59,5 @@ public class LoginController {
 		
 		return "login/login";
 		
-	}
-		
-	
-	
-	@PostMapping("validaracceso")
-	public String validar(@RequestParam String login, @RequestParam String password) {
-		
-		return "index";
 	}
 }
