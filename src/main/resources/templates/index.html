@@ -9,8 +9,6 @@
 	
 	    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
 
-    
-
     <!-- Bootstrap core CSS -->
 	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 	
@@ -31,6 +29,7 @@
 	    </style>
 	    
 	    <link th:href="@{/css/header.css}" rel="stylesheet">
+	    <head th:include="./utils/head.html"></head>
     
     <!-- Custom styles for this template -->
   </head>
@@ -58,5 +57,6 @@
 		        </div>
 			</div>
 		</div>
+	<footer th:include="/utils/footer.html"></footer>
 </body>
 </html>

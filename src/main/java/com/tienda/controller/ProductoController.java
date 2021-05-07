@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tienda.service.CategoriaService;
 import com.tienda.service.ProductoService;
 
 @Controller
@@ -15,6 +16,8 @@ public class ProductoController {
 	
 	@Autowired
 	private ProductoService ps;
+	@Autowired
+	private CategoriaService cs;
 	
 	@PostMapping("/alta")
 	public String alta() {
@@ -31,6 +34,7 @@ public class ProductoController {
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		
+		model.addAttribute("categorias", cs.getAll());
 		model.addAttribute("productos", ps.getAll());
 		
 		return "productos/list";

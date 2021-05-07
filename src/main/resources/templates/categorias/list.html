@@ -5,6 +5,7 @@
 		<title>Lista Usuarios</title>
 		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 		<link th:href="@{/css/list.css}" rel="stylesheet">
+		<head th:include="./utils/head.html"></head>
 	</head>
 	<body>		
 	<div th:include="./utils/header.html"></div>	
@@ -63,5 +64,6 @@
 		        </div>
 		    </div>
 		</div>
+		<footer th:include="./utils/footer.html"></footer>
 	</body>
 </html>

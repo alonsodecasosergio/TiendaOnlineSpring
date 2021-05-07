@@ -5,12 +5,12 @@
 		<title>Lista Usuarios</title>
 		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 		<link th:href="@{/css/list.css}" rel="stylesheet">
+		<head th:include="./utils/head.html"></head>
 	</head>
 	<body>		
 	<div th:include="./utils/header.html"></div>	
 	
 		<!-- TABLAAA -->
-		
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<div class="container bootstrap snippets bootdey">
 		    <div class="row">
@@ -45,7 +45,9 @@
 		                                        <a class="text-center" th:text="${usuario.id}">ID</a>
 		                                        <!--  <span class="user-subhead">Member</span> -->
 		                                    </td>
-		                                    <td th:text="${usuario.rol}">Rol</td>
+		                                    <div th:each="rol : ${roles}">
+		                                    	<td th:if="${rol.id == usuario.rol}" th:text="${rol.rol}">Rol</td>
+		                                    </div>
 		                                    <td class="text-center">
 		                                        <span class="label label-default" th:text="${usuario.email}">Email</span>
 		                                    </td>
@@ -99,5 +101,6 @@
 		        </div>
 		    </div>
 		</div>
+		<footer th:include="./utils/footer.html"></footer>
 	</body>
 </html>

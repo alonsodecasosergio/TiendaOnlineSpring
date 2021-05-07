@@ -5,6 +5,7 @@
 		<title>Lista Usuarios</title>
 		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 		<link th:href="@{/css/list.css}" rel="stylesheet">
+		<head th:include="./utils/head.html"></head>
 	</head>
 	<body>		
 	<div th:include="./utils/header.html"></div>	
@@ -42,7 +43,9 @@
 		                                        <a class="text-center" th:text="${producto.id}">ID</a>
 		                                        <!--  <span class="user-subhead">Member</span> -->
 		                                    </td>
-		                                    <td th:text="${producto.idCategoria}">Categoria</td>
+		                                    <div th:each="categoria : ${categorias}">
+		                                    	<td th:if="${categoria.id == producto.idCategoria}" th:text="${categoria.nombre}">Rol</td>
+		                                    </div>
 		                                    <td class="text-center">
 		                                        <span class="label label-default" th:text="${producto.nombre}">Nombre</span>
 		                                    </td>
@@ -87,5 +90,6 @@
 		        </div>
 		    </div>
 		</div>
+		<footer th:include="./utils/footer.html"></footer>
 	</body>
 </html>

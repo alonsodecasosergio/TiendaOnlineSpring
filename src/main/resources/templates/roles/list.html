@@ -5,12 +5,13 @@
 		<title>Lista Usuarios</title>
 		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 		<link th:href="@{/css/list.css}" rel="stylesheet">
+		<head th:include="./utils/head.html"></head>
 	</head>
 	<body>		
-	<div th:include="./utils/header.html"></div>	
+		
 	
 		<!-- TABLAAA -->
-		
+		<div th:include="./utils/header.html"></div>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<div class="container bootstrap snippets bootdey">
 		    <div class="row">
@@ -59,5 +60,6 @@
 		        </div>
 		    </div>
 		</div>
+		<footer th:include="./utils/footer.html"></footer>
 	</body>
 </html>
