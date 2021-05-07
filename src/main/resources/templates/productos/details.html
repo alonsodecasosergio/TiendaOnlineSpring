@@ -28,8 +28,12 @@
               </h4>
               <p th:text="${producto.descripcion}">
                  Descripcion </p>
-              <div class="product_meta">
-                  <span class="posted_in"> <strong>Categories:</strong> <a rel="tag" th:text="${producto.idCategoria}">Categoria</a></span>
+                 <div th:each="categoria : ${categorias}">
+		                                    	<td th:if="${categoria.id == producto.idCategoria}" th:text="${categoria.nombre}">Rol</td>
+		                                    </div>
+              <div class="product_meta" >
+                  <span class="posted_in"> <strong>Categories:</strong> <a th:each="categoria : ${categorias}" rel="tag" th:if="${categoria.id == producto.idCategoria}" th:text="${categoria.nombre}">Categoria</a>
+                  </span>
               </div>
               <div class="m-bot15"> <strong>Precio : </strong> <span class="pro-price" th:text="${producto.precio + ' €'}"> 0.00€</span></div>
               <div class="form-group">

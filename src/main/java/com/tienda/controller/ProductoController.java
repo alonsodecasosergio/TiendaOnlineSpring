@@ -47,6 +47,7 @@ public class ProductoController {
 		
 		Producto produc = ps.getProducto(id);
 		
+		model.addAttribute("categorias", cs.getAll());
 		model.addAttribute("producto", produc);
 		
 		return "productos/details";
