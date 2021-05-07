@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lista Usuarios</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/list.css}" rel="stylesheet">
+	</head>
+	<body>		
+	<div th:include="./utils/header.html"></div>	
+	
+		<!-- TABLAAA -->
+		
+		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+		<div class="container bootstrap snippets bootdey">
+		    <div class="row">
+		        <div class="col-lg-12">
+		            <div class="no-header clearfix">
+		                <div class="main-box-body clearfix">
+		                    <div class="table-responsive">
+		                    
+		                    <button style="margin:2%;" class="btn btn-success">Añadir</button>
+		                    <hr>
+		                        <table class="table user-list table-striped">
+		                            <thead>
+		                                <tr>
+		                                <th class="text-center"><span>Id</span></th>
+		                                <th class="text-center"><span>Rol</span></th>
+		                                <th>&nbsp;</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody class="text-center">
+		                                <tr th:each="rol : ${roles}">
+		                                    <td>
+		                                        <a class="text-center" th:text="${rol.id}">ID</a>
+		                                        <!--  <span class="user-subhead">Member</span> -->
+		                                    </td>
+		                                    <td th:text="${rol.rol}">Rol</td>
+		                                    <td style="width: 10%;">
+		                                        <a href="#" class="table-link text-info">
+		                                            <span class="fa-stack">
+		                                                <i class="fa fa-square fa-stack-2x"></i>
+		                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+		                                            </span>
+		                                        </a>
+		                                        <a href="#" class="table-link danger">
+		                                            <span class="fa-stack">
+		                                                <i class="fa fa-square fa-stack-2x"></i>
+		                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+		                                            </span>
+		                                        </a>
+		                                    </td>
+		                                </tr>
+		                            </tbody>
+		                        </table>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>
