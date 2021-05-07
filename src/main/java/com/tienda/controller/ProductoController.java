@@ -39,4 +39,10 @@ public class ProductoController {
 		
 		return "productos/list";
 	}
+	
+	@GetMapping("/details")
+	public String details(){
+		
+		return "productos/details";
+	}
 }

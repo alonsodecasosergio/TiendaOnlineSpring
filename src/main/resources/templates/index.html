@@ -30,8 +30,6 @@
 	    
 	    <link th:href="@{/css/header.css}" rel="stylesheet">
 	    <head th:include="./utils/head.html"></head>
-    
-    <!-- Custom styles for this template -->
   </head>
 <body>
 		
@@ -43,7 +41,7 @@
 		 	
 		        <div class="col-lg-3 col-md-6 mb-4" th:each="producto : ${productos}">
 		            <div class="card h-100">
-		                <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
+		                <a href="#"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 		                <div class="card-body">
 		                    <h4 class="card-title"><a th:text="${producto.nombre}">Nombre></a></h4>
 		                    <h5 th:text="${producto.precio} + ' €'">Precio €</h5>
