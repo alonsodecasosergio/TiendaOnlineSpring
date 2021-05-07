@@ -1,28 +1,38 @@
 package com.tienda.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tienda.service.CategoriaService;
+
 @Controller
-@RequestMapping("categoria")
+@RequestMapping("/categoria")
 public class CategoriaController {
 	
-	@PostMapping("alta")
+	@Autowired
+	private CategoriaService cs;
+	
+	@PostMapping("/alta")
 	public String alta() {
 		
 		return "";
 	}
 	
-	@PostMapping("baja")
+	@PostMapping("/baja")
 	public String baja() {
 		
 		return "";
 	}
 	
-	@PostMapping("listar")
-	public String listar() {
+	@GetMapping("/listar")
+	public String listar(Model model) {
 		
-		return "";
+		model.addAttribute("categorias", cs.getAll());
+		
+		return "categorias/list";
 	}
 }

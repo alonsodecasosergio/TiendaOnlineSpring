@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lista Usuarios</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/list.css}" rel="stylesheet">
+	</head>
+	<body>		
+	<div th:include="./utils/header.html"></div>	
+	
+		<!-- TABLAAA -->
+		
+		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+		<div class="container bootstrap snippets bootdey">
+		    <div class="row">
+		        <div class="col-lg-12">
+		            <div class="no-header clearfix">
+		                <div class="main-box-body clearfix">
+		                    <div class="table-responsive">
+		                    
+		                    <button style="margin:2%;" class="btn btn-success">Añadir</button>
+		                    <hr>
+		                        <table class="table user-list table-striped">
+		                            <thead>
+		                                <tr>
+		                                <th class="text-center"><span>Id</span></th>
+		                                <th class="text-center"><span>Id Categoria</span></th>
+		                                <th class="text-center"><span>Nombre</span></th>
+		                                <th class="text-center"><span>Descripcion</span></th>
+		                                <th class="text-center"><span>Precio</span></th>
+		                                <th class="text-center"><span>Stock</span></th>
+		                                <th class="text-center"><span>Fecha Alta</span></th>
+		                                <th class="text-center"><span>Fecha Baja</span></th>
+		                                <th class="text-center"><span>Impuesto</span></th>
+		                                <th>&nbsp;</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody class="text-center">
+		                                <tr th:each="producto : ${productos}">
+		                                    <td>
+		                                        <a class="text-center" th:text="${producto.id}">ID</a>
+		                                        <!--  <span class="user-subhead">Member</span> -->
+		                                    </td>
+		                                    <td th:text="${producto.idCategoria}">Categoria</td>
+		                                    <td class="text-center">
+		                                        <span class="label label-default" th:text="${producto.nombre}">Nombre</span>
+		                                    </td>
+		                                    <td>
+		                                        <a th:text="${producto.descripcion}">Descripcion</a>
+		                                    </td>
+		                                    <td>
+		                                        <a th:text="${producto.precio}">Precio</a>
+		                                    </td>
+		                                    <td>
+		                                        <a  th:text="${producto.stock}">Stock</a>
+		                                    </td>
+		                                    <td>
+		                                        <a  th:text="${producto.fechaAlta}">Fecha Alta</a>
+		                                    </td>
+		                                    <td>
+		                                        <a th:text="${producto.fechaBaja}">Fecha Baja</a>
+		                                    </td>
+		                                    <td>
+		                                        <a  th:text="${producto.impuesto}">Impuesto</a>
+		                                    </td>
+		                                    <td style="width: 10%;">
+		                                        <a href="#" class="table-link text-info">
+		                                            <span class="fa-stack">
+		                                                <i class="fa fa-square fa-stack-2x"></i>
+		                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+		                                            </span>
+		                                        </a>
+		                                        <a href="#" class="table-link danger">
+		                                            <span class="fa-stack">
+		                                                <i class="fa fa-square fa-stack-2x"></i>
+		                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+		                                            </span>
+		                                        </a>
+		                                    </td>
+		                                </tr>
+		                            </tbody>
+		                        </table>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>
