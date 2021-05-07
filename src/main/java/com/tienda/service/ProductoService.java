@@ -15,4 +15,9 @@ public class ProductoService {
 	public Iterable<Producto> getAll() {
         return repository.findAll();
     }
+	
+	public Producto getProducto(int id) {
+		
+		return repository.findById(id);
+	}
 }
