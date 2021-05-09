@@ -27,12 +27,13 @@ public class Producto implements java.io.Serializable {
 	private Date fechaAlta;
 	private Date fechaBaja;
 	private Float impuesto;
+	private String imagen;
 
 	public Producto() {
 	}
 
 	public Producto(Integer idCategoria, String nombre, String descripcion, Double precio, Integer stock,
-			Date fechaAlta, Date fechaBaja, Float impuesto) {
+			Date fechaAlta, Date fechaBaja, Float impuesto, String imagen) {
 		this.idCategoria = idCategoria;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -41,6 +42,7 @@ public class Producto implements java.io.Serializable {
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
 		this.impuesto = impuesto;
+		this.imagen = imagen;
 	}
 
 	public Integer getId() {
@@ -113,6 +115,14 @@ public class Producto implements java.io.Serializable {
 
 	public void setImpuesto(Float impuesto) {
 		this.impuesto = impuesto;
+	}
+	
+	public String getImagen() {
+		return this.imagen;
+	}
+	
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 }
