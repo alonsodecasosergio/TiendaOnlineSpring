@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tienda.model.Entities.Usuario;
+import com.tienda.service.OpcionMenuService;
 import com.tienda.service.UsuarioService;
 import com.tienda.service.UtilService;
 
@@ -23,6 +24,9 @@ public class LoginController {
 	
 	@Autowired
 	private UsuarioService us;
+	
+	@Autowired
+	private OpcionMenuService oms;
 	
 	@GetMapping("/acceso")
 	public String acceso() {
@@ -35,6 +39,8 @@ public class LoginController {
 		
 		Usuario user = us.validarLogin(login, password);
 		sesion.setAttribute("usuario", user);
+		
+		sesion.setAttribute("opcionesMenu", oms.getByIdRol(user.getRol()));
 		
 		System.out.println(user.toString());
 		

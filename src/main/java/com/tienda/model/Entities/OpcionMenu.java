@@ -22,6 +22,10 @@ public class OpcionMenu {
 	
 	@Column(name = "url_opcion")
 	private String urlOpcion;
+	
+	public OpcionMenu() {
+		
+	}
 
 	public OpcionMenu(int idRol, String nombreOpcion, String urlOpcion) {
 		this.idRol = idRol;

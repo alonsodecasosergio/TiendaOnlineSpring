@@ -15,4 +15,9 @@ public class OpcionMenuService {
 	public Iterable<OpcionMenu> getAll(){
 		return omr.findAll();
 	}
+	
+	public Iterable<OpcionMenu> getByIdRol(int id){
+		
+		return omr.findByIdRol(id);
+	}
 }

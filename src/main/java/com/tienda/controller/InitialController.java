@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tienda.service.CategoriaService;
 import com.tienda.service.ProductoService;
 
 @Controller
@@ -16,10 +17,13 @@ public class InitialController {
 	
 	@Autowired
 	private ProductoService ps;
+	@Autowired
+	private CategoriaService cs;
 	
 	@GetMapping("")
 	public String alta(Model model) {
 		
+		model.addAttribute("categorias", cs.getAll());
 		model.addAttribute("productos", ps.getAll());
 				
 		return "index";

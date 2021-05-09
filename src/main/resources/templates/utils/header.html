@@ -59,11 +59,17 @@
 		                            <!-- Main Nav Menu -->
 		                            <div class="main_nav_menu">
 		                                <ul class="standard_dropdown main_nav_dropdown">
-		                                    <li><a th:href="@{/producto/listar}">Productos<i class="fas fa-chevron-down"></i></a></li>
-		                                    <li><a th:href="@{/usuario/listar}">Usuarios<i class="fas fa-chevron-down"></i></a></li>
-		                                    <li><a th:href="@{/rol/listar}">Roles<i class="fas fa-chevron-down"></i></a></li>
-		                                    <li><a th:href="@{/categoria/listar}">Categorias<i class="fas fa-chevron-down"></i></a></li>
-	                                    </ul>
+		                                	
+		                                	<li th:if="${session.usuario != null}" th:each="opcion : ${session.opcionesMenu}">
+		                                		<a th:href="@{/} + ${opcion.urlOpcion}" th:text="${opcion.nombreOpcion}">Productos<i class="fas fa-chevron-down"></i>
+		                                		</a>
+		                                	</li>
+		                     
+	                                		<li th:unless="${session.usuario != null}" th:each="categoria : ${categorias}">
+	                                			<a th:href="@{/producto/category/{id} (id=${categoria.id})}" th:text="${categoria.nombre}">Categoria<i class="fas fa-chevron-down"></i></a>
+                                			</li>
+		                                </ul>
+	                                </div>
 		                            <div class="menu_trigger_container ml-auto">
 		                                <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
 		                                    <div class="menu_burger">
