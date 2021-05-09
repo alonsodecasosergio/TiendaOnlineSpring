@@ -33,7 +33,7 @@ public class UsuarioService {
 			
 			if(UtilService.desencryptedPassword(user.getClave()).equals(password)) {
 				
-				System.out.print("Usuario no es correcto");
+				System.out.print("Usuario es correcto");
 				
 				return user;
 			}

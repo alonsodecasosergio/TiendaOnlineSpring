@@ -36,6 +36,8 @@ public class LoginController {
 		Usuario user = us.validarLogin(login, password);
 		sesion.setAttribute("usuario", user);
 		
+		System.out.println(user.toString());
+		
 		if(user != null) {
 			
 			return "redirect:/";

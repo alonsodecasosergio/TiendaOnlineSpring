@@ -34,10 +34,14 @@
 		            <div class="container">
 		                <div class="row">
 		                    <div class="col d-flex flex-row-reverse">
-		                            <div class="top_bar_user">
+		                            <div th:if="${session.usuario == null}" class="top_bar_user">
 		                                <div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
 		                                <div><a th:href="@{/login/registrar}">Registrar</a></div>
 		                                <div><a th:href="@{/login/acceso}"><button class="btn btn-outline-warning">Acceder</button></a></div>
+		                            </div>
+		                            <div th:unless="${session.usuario == null}" class="top_bar_user">
+		                            	<div><a>Bienvenido, </a><a th:text=${session.usuario.nombre}>Bienvenido </a></div>
+		                                <div><a th:href="@{/login/acceso}"><button class="btn btn-outline-warning">Cerrar sesion</button></a></div>
 		                            </div>
 		                        </div>
 		                    </div>
