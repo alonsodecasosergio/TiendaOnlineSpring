@@ -20,4 +20,9 @@ public class ProductoService {
 		
 		return repository.findById(id);
 	}
+	
+	public Iterable<Producto> getAllCategory(int id){
+		
+		return repository.findByIdCategoria(id);
+	}
 }

@@ -52,4 +52,13 @@ public class ProductoController {
 		
 		return "productos/details";
 	}
+	
+	@GetMapping("/category/{id}")
+	public String category(Model model,@PathVariable("id") int id){
+		
+		model.addAttribute("categorias", cs.getAll());
+		model.addAttribute("productos", ps.getAllCategory(id));
+				
+		return "index";
+	}
 }
