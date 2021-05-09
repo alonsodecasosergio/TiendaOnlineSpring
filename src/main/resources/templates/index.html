@@ -48,7 +48,7 @@
 		                </div>
 		                <div class="card-footer d-flex align-items-right ">
 		                	<small class="col align-self-center text-muted" th:text="'Stock: ' + ${producto.stock}"> Stock: </small>
-		                	<button class="col btn btn-outline-primary">Añadir al carrito</button>
+		                	<a th:href="@{/carrito/add/{id} (id=${producto.id})}"><button class="col btn btn-outline-primary" >Añadir al carrito</button></a>
 		                </div>
 		            </div>
 		        </div>

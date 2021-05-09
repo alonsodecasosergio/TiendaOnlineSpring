@@ -1,6 +1,7 @@
 package com.tienda.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tienda.model.Entities.Producto;
 import com.tienda.model.Entities.Usuario;
 import com.tienda.service.OpcionMenuService;
 import com.tienda.service.UsuarioService;
@@ -40,11 +42,15 @@ public class LoginController {
 		Usuario user = us.validarLogin(login, password);
 		sesion.setAttribute("usuario", user);
 		
+		
 		sesion.setAttribute("opcionesMenu", oms.getByIdRol(user.getRol()));
 		
 		System.out.println(user.toString());
 		
 		if(user != null) {
+			
+			ArrayList<Producto> carrito = new ArrayList<Producto>();
+			sesion.setAttribute("carrito", carrito);
 			
 			return "redirect:/";
 			

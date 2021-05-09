@@ -21,9 +21,9 @@ public class InitialController {
 	private CategoriaService cs;
 	
 	@GetMapping("")
-	public String alta(Model model) {
+	public String alta(HttpSession sesion, Model model) {
 		
-		model.addAttribute("categorias", cs.getAll());
+		sesion.setAttribute("categorias", cs.getAll());
 		model.addAttribute("productos", ps.getAll());
 				
 		return "index";

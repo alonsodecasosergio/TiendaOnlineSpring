@@ -65,9 +65,11 @@
 		                                		</a>
 		                                	</li>
 		                     
-	                                		<li th:unless="${session.usuario != null}" th:each="categoria : ${categorias}">
+	                                		<li th:unless="${session.usuario != null}" th:each="categoria : ${session.categorias}">
 	                                			<a th:href="@{/producto/category/{id} (id=${categoria.id})}" th:text="${categoria.nombre}">Categoria<i class="fas fa-chevron-down"></i></a>
                                 			</li>
+                                			<li><a th:href="@{/carrito/view}" >Carrito<i class="fas fa-chevron-down"></i></a></li>
+                                			
 		                                </ul>
 	                                </div>
 		                            <div class="menu_trigger_container ml-auto">
