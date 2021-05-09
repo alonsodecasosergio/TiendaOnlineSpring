@@ -41,7 +41,7 @@
                   <input type="quantiy" placeholder="1" class="form-control quantity">
               </div>
               <p>
-                  <button style="margin-top:3%;" class="btn btn-round btn-success" type="button"><i class="fa fa-shopping-cart"></i> Añadir al carrito</button>
+                  <a th:href="@{/carrito/add/{id} (id=${producto.id})}"><button style="margin-top:3%;" class="btn btn-round btn-success" type="button"><i class="fa fa-shopping-cart"></i> Añadir al carrito</button></a>
               </p>
           </div>
       </div>
