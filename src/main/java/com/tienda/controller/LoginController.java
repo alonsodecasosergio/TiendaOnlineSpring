@@ -86,4 +86,13 @@ public class LoginController {
 		return "redirect:/login/acceso";
 		
 	}
+	
+	@GetMapping("/close")
+	public String cerrarSesion(HttpSession sesion, Model model) {
+		
+		sesion.invalidate();		
+		
+		return "redirect:/";
+		
+	}
 }
