@@ -51,7 +51,7 @@
 		                                        <a  th:text="${pedido.numFactura}">NumFactura</a>
 		                                    </td>
 		                                    <td>
-		                                        <a  th:text="${pedido.total}">Total</a>
+		                                        <a  th:text="${pedido.total} + ' €'">Total</a>
 		                                    </td>
 		                                    <td style="width: 10%;">
 		                                        <a th:if="${pedido.estado == 'Pendiente'}" th:href="@{/pedido/cancelclient/{id} (id=${pedido.id})}" class="table-link danger">
