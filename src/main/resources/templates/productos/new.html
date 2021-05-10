@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Tienda Online | Sergio alonso</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<head th:include="./utils/head.html"></head>
+	<link rel="stylesheet" th:href="@{/css/registrar.css}">
+</head>
+<body>
+	<div th:include="./utils/header.html"></div>
+	<div id="contenedor"  class="page-wrapper p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title row" th:if="${producto.id>0}">Modificar Producto</h2>
+                    <h2 class="title row" th:unless="${producto.id>0}">Nuevo Producto</h2>
+                    <form th:action="@{/producto/new/submit}"  th:object="${Producto}" method="post">
+                    	<input type="hidden" name="id" th:if="${producto!=null}" th:value="${producto.id}">
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Categoria</label>
+		                                <select class="input--style-4" id="select" name="idCategoria" required>
+                                    		<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}" th:selected="${categoria.id == producto.idCategoria}">Opcion</option>
+                                    	</select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Nombre</label>
+                                    <input class="input--style-4" type="text" name="nombre"  th:if="${producto!=null}" th:value="${producto.nombre}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Descripción</label>
+                                    <input class="input--style-4" type="text" name="descripcion"  th:if="${producto!=null}" th:value="${producto.descripcion}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <label class="label">Precio</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4" type="number" name="precio" required=""  th:if="${producto!=null}" th:value="${producto.precio}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <label class="label">Stock</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4" type="number" name="stock" required=""  th:if="${producto!=null}" th:value="${producto.stock}">
+                                    </div>
+                                </div>
+                           </div>
+                           
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Impuesto</label>
+                                    <input class="input--style-4" type="number" name="impuesto"  th:if="${producto!=null}" th:value="${producto.impuesto}">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Imagen</label>
+                                    <input class="input--style-4" type="text" name="imagen"  th:if="${producto!=null}" th:value="${producto.imagen}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button style="width:100%;" class="btn btn--radius-2 btn--blue btn-lg" type="submit"  th:if="${producto!=null}" th:value="Modificar">Añadir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:include="./utils/footer.html"></footer>
+</body>
+</html>

@@ -1,9 +1,12 @@
 package com.tienda.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,16 +24,21 @@ public class ProductoController {
 	@Autowired
 	private CategoriaService cs;
 	
-	@PostMapping("/alta")
-	public String alta() {
+	@GetMapping("/new")
+	public String add(Model model) {
 		
-		return "";
+		model.addAttribute("producto", new Producto());
+		model.addAttribute("categorias", cs.getAll());
+		
+		return "productos/new";
 	}
 	
-	@PostMapping("/baja")
-	public String baja() {
+	@PostMapping("/new/submit")
+	public String addSubmit(Model model, @ModelAttribute Producto producto) {
 		
-		return "";
+		ps.addProducto(producto);
+		
+		return "redirect:/producto/listar";
 	}
 	
 	@GetMapping("/listar")
@@ -75,6 +83,7 @@ public class ProductoController {
 		
 		Producto producto = ps.getProducto(id);
 		model.addAttribute("producto", producto);
+		model.addAttribute("categorias", cs.getAll());
 		
 		return "productos/new";
 	}

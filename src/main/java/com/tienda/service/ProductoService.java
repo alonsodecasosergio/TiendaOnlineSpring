@@ -1,5 +1,7 @@
 package com.tienda.service;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,10 @@ public class ProductoService {
 	public void deleteProducto(int id) {
 		
 		repository.deleteById(id);
+	}
+	
+	public void addProducto(Producto producto) {
+		
+		repository.save(producto);
 	}
 }
