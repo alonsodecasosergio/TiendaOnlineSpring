@@ -42,12 +42,9 @@ public class LoginController {
 		Usuario user = us.validarLogin(login, password);
 		sesion.setAttribute("usuario", user);
 		
-		
-		sesion.setAttribute("opcionesMenu", oms.getByIdRol(user.getRol()));
-		
-		System.out.println(user.toString());
-		
 		if(user != null) {
+			
+			sesion.setAttribute("opcionesMenu", oms.getByIdRol(user.getRol()));
 			
 			ArrayList<Producto> carrito = new ArrayList<Producto>();
 			sesion.setAttribute("carrito", carrito);
@@ -56,7 +53,7 @@ public class LoginController {
 			
 		}else {
 			
-			return "login/login";
+			return "redirect:/login/acceso";
 		}
 		
 		
