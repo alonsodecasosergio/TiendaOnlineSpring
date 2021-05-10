@@ -31,6 +31,19 @@ public class PedidoService {
 		 return repository.findAll();
 	}
 	
+	public Iterable<Pedido> getByIdUsuario(int id) {
+		
+		 return repository.findByIdUsuario(id);
+	}
+	
+	public void deletePedido(int id) {
+		repository.deleteById(id);
+	}
+	
+	public Pedido getPedido(int id) {
+		return repository.findById(id);
+	}
+	
 	public void crearPedido(Usuario user, ArrayList<Producto> productos, String pago) {
 		
 		Pedido pedido = new Pedido();

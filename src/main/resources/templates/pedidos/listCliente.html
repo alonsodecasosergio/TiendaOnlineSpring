@@ -25,8 +25,6 @@
 		                        <table class="table user-list table-striped">
 		                            <thead>
 		                                <tr>
-		                                <th class="text-center"><span>Id</span></th>
-		                                <th class="text-center"><span>Usuario</span></th>
 		                                <th class="text-center"><span>Fecha</span></th>
 		                                <th class="text-center"><span>Metodo de pago</span></th>
 		                                <th class="text-center"><span>Estado</span></th>
@@ -37,13 +35,6 @@
 		                            </thead>
 		                            <tbody class="text-center">
 		                                <tr th:each="pedido : ${pedidos}">
-		                                    <td>
-		                                        <a class="text-center" th:text="${pedido.id}">ID</a>
-		                                        <!--  <span class="user-subhead">Member</span> -->
-		                                    </td>
-		                                    <div th:each="usuario : ${usuarios}">
-		                                    	<td class="label"  th:if="${usuario.id == pedido.idUsuario}" th:text="${usuario.email}">Email Usuario</td>
-		                                    </div>
 		                                    <td class="text-center">
 		                                        <span th:text="${pedido.fecha}">Fecha</span>
 		                                    </td>
@@ -63,10 +54,7 @@
 		                                        <a  th:text="${pedido.total}">Total</a>
 		                                    </td>
 		                                    <td style="width: 10%;">
-		                                        <a th:if="${pedido.estado == 'Pendiente'}" th:href="@{/pedido/send/{id} (id=${pedido.id})}" class="table-link text-info">
-		                                            <span>Enviado</span>
-		                                        </a>
-		                                        <a th:if="${pedido.estado == 'Pendiente Cancelar' && session.usuario.rol == 1}" th:href="@{/pedido/cancel/{id} (id=${pedido.id})}" class="table-link danger">
+		                                        <a th:if="${pedido.estado == 'Pendiente'}" th:href="@{/pedido/cancelclient/{id} (id=${pedido.id})}" class="table-link danger">
 		                                            <span class="fa-stack">
 		                                                <i class="fa fa-square fa-stack-2x"></i>
 		                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>

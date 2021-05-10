@@ -26,7 +26,7 @@
 		                            <thead>
 		                                <tr>
 		                                <th class="text-center"><span>Id</span></th>
-		                                <th class="text-center"><span>Id Categoria</span></th>
+		                                <th class="text-center"><span>Categoria</span></th>
 		                                <th class="text-center"><span>Nombre</span></th>
 		                                <th class="text-center"><span>Descripcion</span></th>
 		                                <th class="text-center"><span>Precio</span></th>
@@ -47,7 +47,7 @@
 		                                    	<td th:if="${categoria.id == producto.idCategoria}" th:text="${categoria.nombre}">Rol</td>
 		                                    </div>
 		                                    <td class="text-center">
-		                                        <span class="label label-default" th:text="${producto.nombre}">Nombre</span>
+		                                        <span class="label" th:text="${producto.nombre}">Nombre</span>
 		                                    </td>
 		                                    <td>
 		                                        <a th:text="${producto.descripcion}">Descripcion</a>
