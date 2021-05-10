@@ -95,7 +95,7 @@ public class CarritoControler {
 		
 		pedSer.crearPedido(user, carrito, pago);
 		
-		sesion.setAttribute("carrito", null);
+		sesion.setAttribute("carrito", new ArrayList<Producto>());
 		
 		return "pedidos/pagado";
 	}
