@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Tienda Online | Sergio Alonso</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/list.css}" rel="stylesheet">
+		
+		<head th:include="./utils/head.html"></head>
 </head>
 <body>
-Pagado
+	<div th:include="./utils/header.html"></div>	
+	<div style="margin-top:3%;" class="jumbotron text-center">
+	  <h1 class="display-3">Su pedido ha sido enviado!</h1>
+	  <hr>
+	  <p class="lead">
+	    <a class="btn btn btn-outline-warning btn-lg" th:href="@{/}" role="button">Volver al catalogo</a>
+	  </p>
+	</div>
+	<footer th:include="./utils/footer.html"></footer>
 </body>
 </html>
