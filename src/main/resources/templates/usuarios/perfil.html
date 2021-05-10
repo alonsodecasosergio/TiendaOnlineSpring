@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Tienda Online | Sergio Alonso</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/css/perfil.css}" rel="stylesheet">
+	
+	<head th:include="./utils/head.html"></head>
+</head>
+<body>
+	<div th:include="./utils/header.html"></div>
+	<div style="margin-top:3%;" class="container">
+	<div class="row gutters">
+	<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+	<div class="card h-100">
+		<div class="card-body">
+			<div class="account-settings">
+				<div class="user-profile">
+					<div class="user-avatar">
+						<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+					</div>
+					<h5 class="user-name" th:text="${session.usuario.nombre}">Nombre</h5>
+					<h6 class="user-email" th:text="${session.usuario.email}">Email</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+	<div class="card h-100">
+		<div class="card-body">
+			<div class="row gutters">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<h6 class="mb-2 text-primary">Datos Personales</h6>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="fullName">Nombre</label>
+						<input type="text" class="form-control" id="fullName" placeholder="Introduzca su nombre" th:value="${session.usuario.nombre}">
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="eMail">Email</label>
+						<input type="email" class="form-control" id="eMail" placeholder="Introduzca su email"  th:value="${session.usuario.email}">
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="phone">Telefono</label>
+						<input type="text" class="form-control" id="phone" placeholder="Introduzca su telefono"  th:value="${session.usuario.telefono}">
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="website">DNI</label>
+						<input type="url" class="form-control" id="website" placeholder="Introduzca su DNI"  th:value="${session.usuario.dni}">
+					</div>
+				</div>
+			</div>
+			<div class="row gutters">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<h6 class="mt-3 mb-2 text-primary">Datos de contacto</h6>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="Street">Dirección</label>
+						<input type="name" class="form-control" id="Street" placeholder="Introduzca su direccion"  th:value="${session.usuario.direccion}">
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="ciTy">Localidad</label>
+						<input type="name" class="form-control" id="ciTy" placeholder="Introduzca su localidad"  th:value="${session.usuario.localidad}">
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="sTate">Provincia</label>
+						<input type="text" class="form-control" id="sTate" placeholder="Introduzca su provincia"  th:value="${session.usuario.provincia}">
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+					<div class="form-group">
+						<label for="zIp">Clave</label>
+						<input type="text" class="form-control" id="zIp" placeholder="Introduzca su clave"  th:value="${session.usuario.clave}">
+					</div>
+				</div>
+			</div>
+			<div style="margin-top:2%;" class="row gutters">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="text-right">
+						<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+						<button type="button" id="submit" name="submit" class="btn btn-primary">Guardar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<footer th:include="./utils/footer.html"></footer>
+</body>
+</html>
