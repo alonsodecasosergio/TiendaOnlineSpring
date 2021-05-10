@@ -59,15 +59,16 @@
 		                            <!-- Main Nav Menu -->
 		                            <div class="main_nav_menu">
 		                                <ul class="standard_dropdown main_nav_dropdown">
-		                                	
+		                                
+		                                	<li th:if="${session.usuario == null || session.usuario.rol == 3}" th:each="categoria : ${session.categorias}">
+	                                			<a th:href="@{/producto/category/{id} (id=${categoria.id})}" th:text="${categoria.nombre}">Categoria<i class="fas fa-chevron-down"></i></a>
+                                			</li>
+                                			
 		                                	<li th:if="${session.usuario != null}" th:each="opcion : ${session.opcionesMenu}">
 		                                		<a th:href="@{/} + ${opcion.urlOpcion}" th:text="${opcion.nombreOpcion}">Productos<i class="fas fa-chevron-down"></i>
 		                                		</a>
-		                                	</li>
-		                     
-	                                		<li th:if="${session.usuario == null || session.usuario.rol == 3}" th:each="categoria : ${session.categorias}">
-	                                			<a th:href="@{/producto/category/{id} (id=${categoria.id})}" th:text="${categoria.nombre}">Categoria<i class="fas fa-chevron-down"></i></a>
-                                			</li>
+		                                	</li>	            
+		                                	                    		
                                 			<li><a th:href="@{/carrito/view}" >Carrito<i class="fas fa-chevron-down"></i></a></li>
                                 			
 		                                </ul>
