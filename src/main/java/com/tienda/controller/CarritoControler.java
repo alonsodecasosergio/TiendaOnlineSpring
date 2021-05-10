@@ -48,8 +48,6 @@ public class CarritoControler {
 			
 			
 		}
-		
-		
 		sesion.setAttribute("carrito", carrito);
 		
 		return "redirect:/";
