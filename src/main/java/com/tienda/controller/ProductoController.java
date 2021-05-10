@@ -61,4 +61,21 @@ public class ProductoController {
 				
 		return "index";
 	}
+	
+	@GetMapping("/del/{id}")
+	public String delete(Model model, @PathVariable("id") int id) {
+		
+		ps.deleteProducto(id);
+		
+		return "redirect:/producto/listar";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String editar(Model model, @PathVariable("id") int id) {
+		
+		Producto producto = ps.getProducto(id);
+		model.addAttribute("producto", producto);
+		
+		return "productos/new";
+	}
 }

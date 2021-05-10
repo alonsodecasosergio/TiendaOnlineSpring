@@ -25,4 +25,9 @@ public class ProductoService {
 		
 		return repository.findByIdCategoria(id);
 	}
+	
+	public void deleteProducto(int id) {
+		
+		repository.deleteById(id);
+	}
 }
