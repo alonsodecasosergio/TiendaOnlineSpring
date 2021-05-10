@@ -6,5 +6,5 @@ import com.tienda.model.Entities.DetallePedido;
 
 
 public interface DetallePedidoRepository extends JpaRepository<DetallePedido, Integer>{
-
+	Iterable<DetallePedido> findByIdPedido(int id);
 }

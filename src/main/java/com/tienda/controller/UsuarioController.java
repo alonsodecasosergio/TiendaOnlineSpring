@@ -39,4 +39,11 @@ public class UsuarioController {
 		
 		return "usuarios/list";
 	}
+	
+	@GetMapping("/perfil")
+	public String perfil(Model model) {
+		
+		
+		return "usuarios/perfil";
+	}
 }

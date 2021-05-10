@@ -16,5 +16,11 @@ public class DetallePedidoService {
 		
 		repository.save(lineaPedido);
 	}
+	
+	
+	public Iterable<DetallePedido> getByIdPedido(int id) {
+		
+		return repository.findByIdPedido(id);
+	}
 
 }

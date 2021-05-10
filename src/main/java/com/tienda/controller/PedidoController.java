@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tienda.model.Entities.Pedido;
 import com.tienda.model.Entities.Usuario;
+import com.tienda.service.DetallePedidoService;
 import com.tienda.service.PedidoService;
+import com.tienda.service.ProductoService;
 import com.tienda.service.UsuarioService;
 
 @Controller
@@ -23,6 +25,10 @@ public class PedidoController {
 	private PedidoService ps;
 	@Autowired
 	private UsuarioService us;
+	@Autowired
+	private DetallePedidoService dps;
+	@Autowired
+	private ProductoService producServi;
 	
 	@GetMapping("/listar")
 	public String listar(Model model) {
@@ -77,5 +83,14 @@ public class PedidoController {
 		ps.addPedido(pedido);
 		
 		return "redirect:/pedido/listar";
+	}
+	
+	@GetMapping("/details/{id}")
+	public String detalles(Model model, @PathVariable("id") int id) {
+		
+		model.addAttribute("detalles", dps.getByIdPedido(id));
+		model.addAttribute("productos", producServi.getAll());
+		
+		return "pedidos/listDetails";
 	}
 }
