@@ -31,11 +31,9 @@ public class CarritoControler {
 	@GetMapping("/add/{id}")
 	public String add(HttpSession sesion, Model model,@PathVariable("id") int id) {
 		
-		System.out.println("Dentro1");
 		
 		ArrayList<Producto> carrito = null;
 		
-		System.out.println(ps.getProducto(id).toString());
 		
 		if(sesion.getAttribute("carrito") != null) {
 			
@@ -48,7 +46,6 @@ public class CarritoControler {
 			carrito = new ArrayList<Producto>();
 			carrito.add(ps.getProducto(id));
 			
-			System.out.println("Dentro");
 			
 		}
 		
@@ -56,5 +53,25 @@ public class CarritoControler {
 		sesion.setAttribute("carrito", carrito);
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("/del/{id}")
+	public String delete(HttpSession sesion, Model model, @PathVariable("id") int id) {
+		
+		ArrayList<Producto> carrito = (ArrayList<Producto>) sesion.getAttribute("carrito");
+		
+		
+		for(int i = 0; i < carrito.size(); i++) {
+			
+			Producto produc = carrito.get(i);
+			
+			if(produc.getId() == id) {
+				
+				carrito.remove(produc);
+				
+			}
+		}
+		
+		return "redirect:/carrito/view";
 	}
 }
