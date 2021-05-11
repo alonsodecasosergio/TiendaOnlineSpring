@@ -85,9 +85,16 @@ public class PedidoController {
 		return "redirect:/pedido/listar";
 	}
 	
+	@GetMapping("/assess/{id}")
+	public String valorar(Model model, @PathVariable("id") int id) {
+		
+		return "";
+	}
+	
 	@GetMapping("/details/{id}")
 	public String detalles(Model model, @PathVariable("id") int id) {
 		
+		model.addAttribute("pedido", ps.getPedido(id));
 		model.addAttribute("detalles", dps.getByIdPedido(id));
 		model.addAttribute("productos", producServi.getAll());
 		
