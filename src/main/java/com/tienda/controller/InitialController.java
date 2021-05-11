@@ -2,6 +2,7 @@ package com.tienda.controller;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,10 @@ public class InitialController {
 	@Autowired
 	private CategoriaService cs;
 	
+
 	@GetMapping("")
 	public String alta(HttpSession sesion, Model model) {
+		
 		
 		sesion.setAttribute("categorias", cs.getAll());
 		model.addAttribute("productos", ps.getAll());

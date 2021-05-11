@@ -46,9 +46,6 @@ public class LoginController {
 			
 			sesion.setAttribute("opcionesMenu", oms.getByIdRol(user.getRol()));
 			
-			ArrayList<Producto> carrito = new ArrayList<Producto>();
-			sesion.setAttribute("carrito", carrito);
-			
 			return "redirect:/";
 			
 		}else {

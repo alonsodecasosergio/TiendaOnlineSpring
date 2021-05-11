@@ -35,7 +35,11 @@ public class CarritoControler {
 	@GetMapping("/view")
 	public String listar(HttpSession sesion, Model model) {
 		
-		
+		if(sesion.getAttribute("carrito") == null) {
+
+			sesion.setAttribute("carrito",new ArrayList<Producto>());
+			
+		}
 		model.addAttribute("total", cs.total( (ArrayList<Producto>) sesion.getAttribute("carrito")) + " €");
 		
 		return "productos/cart";
