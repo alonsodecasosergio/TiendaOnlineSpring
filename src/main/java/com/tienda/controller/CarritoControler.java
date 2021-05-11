@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tienda.model.Entities.Producto;
 import com.tienda.model.Entities.Usuario;
 import com.tienda.service.CarritoService;
+import com.tienda.service.MetodoPagoService;
 import com.tienda.service.PedidoService;
 import com.tienda.service.ProductoService;
 
@@ -31,6 +32,8 @@ public class CarritoControler {
 	private PedidoService pedSer;
 	@Autowired
 	private CarritoService cs;
+	@Autowired
+	private MetodoPagoService mps;
 	
 	@GetMapping("/view")
 	public String listar(HttpSession sesion, Model model) {
@@ -41,6 +44,7 @@ public class CarritoControler {
 			
 		}
 		model.addAttribute("total", cs.total( (ArrayList<Producto>) sesion.getAttribute("carrito")) + " €");
+		model.addAttribute("metodoPago", mps.getAll());
 		
 		return "productos/cart";
 	}

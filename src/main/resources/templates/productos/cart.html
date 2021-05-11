@@ -84,8 +84,7 @@
 	             <div class="mt-4">
 	                <label class="text-muted font-weight-normal">Metodo de pago</label>
 	                <select class="form-control" name="pago">
-	                	<option value="Tarjeta">Tarjeta</option>
-	                	<option value="Efectivo">PayPal</option>
+	                	<option th:each="metodo : ${metodoPago}" th:value="${metodo.metodoPago}" th:text="${metodo.metodoPago}">Metodo Pago</option>
 	                </select>
 	              </div>
 	              <div class="mt-4">
