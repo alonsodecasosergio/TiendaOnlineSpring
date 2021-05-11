@@ -45,6 +45,48 @@
               </p>
           </div>
       </div>
+      <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+		<div style="margin-top:4%;" class="container bootstrap snippets bootdey">
+		    <div class="row">
+		        <div class="col-lg-12">
+		            <div class="no-header clearfix">
+		                <div class="main-box-body clearfix">
+		                    <div class="table-responsive">
+		                    	
+		                    	 <h1 class="display-3 text-center">Valoraciones </h1>
+		                    <hr>
+		                        <table style="margin-bottom:3%;" class="table user-list table-striped">
+		                            <thead>
+		                                <tr>
+		                                <th class="text-center"><span>Usuario</span></th>
+		                                <th class="text-center"><span>Valoración</span></th>
+		                                <th class="text-center"><span>Comentario</span></th>
+		                                </tr>
+		                            </thead>
+		                            <tbody class="text-center">
+		                                <tr th:each="valorar : ${valoraciones}">
+		                                	<td>
+		                                		<div th:each="usuario : ${usuarios}">
+		                                			<a th:if="${usuario.id == valorar.idUsuairo}" class="text-center" th:text="${usuario.nombre}">Usuario</a>
+		                                		</div>
+		                                    </td>
+		                                    <td>
+		                                        <a class="text-center" th:text="${valorar.valoracion}">Valoracion</a>
+		                                        <!--  <span class="user-subhead">Member</span> -->
+		                                    </td>
+		                                    <td>
+		                                        <a class="text-center" th:text="${valorar.comentario}">Comentario</a>
+		                                        <!--  <span class="user-subhead">Member</span> -->
+		                                    </td>
+		                                </tr>
+		                            </tbody>
+		                        </table>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
   </section>
   </div>
   </div>

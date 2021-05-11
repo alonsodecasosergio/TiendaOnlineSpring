@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tienda.model.Entities.Producto;
 import com.tienda.service.CategoriaService;
 import com.tienda.service.ProductoService;
+import com.tienda.service.UsuarioService;
+import com.tienda.service.ValoracionService;
 
 @Controller
 @RequestMapping("/producto")
@@ -24,6 +26,10 @@ public class ProductoController {
 	private ProductoService ps;
 	@Autowired
 	private CategoriaService cs;
+	@Autowired
+	private UsuarioService us;
+	@Autowired
+	private ValoracionService vs;
 	
 	@GetMapping("/new")
 	public String add(Model model) {
@@ -56,6 +62,8 @@ public class ProductoController {
 		
 		Producto produc = ps.getProducto(id);
 		
+		model.addAttribute("usuarios", us.getAll());
+		model.addAttribute("valoraciones", vs.getByIdProducto(id));
 		model.addAttribute("categorias", cs.getAll());
 		model.addAttribute("producto", produc);
 		
