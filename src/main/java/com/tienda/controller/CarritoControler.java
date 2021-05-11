@@ -91,13 +91,19 @@ public class CarritoControler {
 		
 		
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
-		ArrayList<Producto> carrito = (ArrayList<Producto>) sesion.getAttribute("carrito");
+		if(user != null) {
+			
+			ArrayList<Producto> carrito = (ArrayList<Producto>) sesion.getAttribute("carrito");
+			
+			pedSer.crearPedido(user, carrito, pago);
+			
+			sesion.setAttribute("carrito", new ArrayList<Producto>());
+			
+			return "pedidos/pagado";
+		}
 		
-		pedSer.crearPedido(user, carrito, pago);
+		return "redirect:/login/acceso";
 		
-		sesion.setAttribute("carrito", new ArrayList<Producto>());
-		
-		return "pedidos/pagado";
 	}
 	
 	

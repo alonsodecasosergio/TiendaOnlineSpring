@@ -39,11 +39,11 @@
 	<div class="container" style="margin-top:5%">
 	
 		<!-- -------------------SLIDER PRECIO----------------- -->
-		<form style="margin-bottom:3%;" method="post" action="/action_page_post.php">
-	        <label class="label" for="price-min">Precio</label>
+		<form style="margin-bottom:3%;" th:action="@{/producto/prince}" method="get">
+	        <label class="label" for="price-min">Precio máximo</label>
 	      <div data-role="rangeslider">
 	        <input type="range" name="precio" id="precio" value="0" min="0" max="1000">
-	        <span id="valorPrecio">0</span>
+	        <span name="precio" id="valorPrecio">0</span>
 	      </div>
 	      <input type="submit" data-inline="true" class="btn btn-outline-primary" value="Filtrar">
         </form>

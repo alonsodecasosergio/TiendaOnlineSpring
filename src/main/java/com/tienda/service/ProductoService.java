@@ -37,4 +37,9 @@ public class ProductoService {
 		
 		repository.save(producto);
 	}
+	
+	public Iterable<Producto> getProductosPrecioMax(double precio){
+		
+		return repository.findByPrecioMaximo(precio);
+	}
 }

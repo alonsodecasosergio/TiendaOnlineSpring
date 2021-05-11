@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tienda.model.Entities.Producto;
 import com.tienda.service.CategoriaService;
@@ -67,6 +68,15 @@ public class ProductoController {
 		model.addAttribute("categorias", cs.getAll());
 		model.addAttribute("productos", ps.getAllCategory(id));
 				
+		return "index";
+	}
+	
+	@GetMapping("/prince")
+	public String prince(Model model,  @RequestParam double precio) {
+		
+		model.addAttribute("productos", ps.getProductosPrecioMax(precio));
+		System.out.println(ps.getProductosPrecioMax(precio));
+		
 		return "index";
 	}
 	

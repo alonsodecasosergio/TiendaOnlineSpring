@@ -26,7 +26,6 @@ public class InitialController {
 	@GetMapping("")
 	public String alta(HttpSession sesion, Model model) {
 		
-		sesion.setAttribute("carrito", new ArrayList<Producto>());
 		sesion.setAttribute("categorias", cs.getAll());
 		model.addAttribute("productos", ps.getAll());
 				
