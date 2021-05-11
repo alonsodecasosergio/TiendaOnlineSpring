@@ -16,6 +16,7 @@ import com.tienda.service.DetallePedidoService;
 import com.tienda.service.PedidoService;
 import com.tienda.service.ProductoService;
 import com.tienda.service.UsuarioService;
+import com.tienda.service.ValoracionService;
 
 @Controller
 @RequestMapping("/pedido")
@@ -29,6 +30,8 @@ public class PedidoController {
 	private DetallePedidoService dps;
 	@Autowired
 	private ProductoService producServi;
+	@Autowired
+	private ValoracionService vs;
 	
 	@GetMapping("/listar")
 	public String listar(Model model) {
@@ -88,7 +91,9 @@ public class PedidoController {
 	@GetMapping("/assess/{id}")
 	public String valorar(Model model, @PathVariable("id") int id) {
 		
-		return "";
+		model.addAttribute("producto", producServi.getProducto(id));
+		
+		return "productos/valoracion";
 	}
 	
 	@GetMapping("/details/{id}")

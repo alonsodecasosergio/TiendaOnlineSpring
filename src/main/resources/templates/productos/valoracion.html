@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lista Usuarios</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/list.css}" rel="stylesheet">
+		<head th:include="./utils/head.html"></head>
+	</head>
+	<body>		
+	<div th:include="./utils/header.html"></div>	
+	
+		<div style="margin-top:3%;" class="jumbotron text-center">
+	  <h1 class="display-3">Valoración </h1>
+	  <hr style="width:70%;" class="container">
+	  <h1 class="display-6" th:text="${producto.nombre}">Nombre producto</h1>
+	  <form style="margin-bottom:3%;" th:action="@{/producto/prince}" method="get">
+	        <label class="label" for="price-min">Puntuación</label>
+	      <div data-role="rangeslider">
+	        <input type="range" name="precio" id="precio" value="0" min="0" max="5">
+	        <span name="precio" id="valorPrecio">0</span>
+	        <br>
+	        <label style="margin-top:1%;" class="label">Comentario</label>
+	        <br>
+	        <div style="width:30%;" class="container">
+	        	<input class="form-control" style="widht:20%;"  type="text" name="comentario">
+	        </div>
+	      </div>
+	      <p class="lead">
+	      <button style="margin-top:3%;" class="btn btn btn-outline-success btn-lg" type="submit">Valorar</button>
+	  	</p>
+      </form>
+	</div>
+		<footer th:include="./utils/footer.html"></footer>
+		<script>
+	  addEventListener('load',inicio,false);
+	
+	  function inicio()
+	  {
+	    document.getElementById('precio').addEventListener('change',cambioPrecio,false);
+	  }
+	
+	  function cambioPrecio()
+	  {    
+	    document.getElementById('valorPrecio').innerHTML=document.getElementById('precio').value;
+	  }
+	</script>
+	</body>
+</html>

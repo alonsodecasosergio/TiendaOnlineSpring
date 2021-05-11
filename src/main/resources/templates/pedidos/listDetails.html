@@ -51,7 +51,7 @@
 		                                        <a  th:text="${linea.total} + ' €'">Total</a>
 		                                    </td>
 		                                    <td style="width: 10%;">
-		                                    	<a th:if="${pedido.estado == 'Enviado'}" class="table-link text-info">
+		                                    	<a th:href="@{/pedido/assess/{id} (id=${linea.idProducto})}" th:if="${pedido.estado == 'Enviado'}" class="table-link text-info">
 		                                            <span>Valorar</span>
 		                                        </a>
 		                                        <a th:if="${pedido.estado == 'Pendiente'}" class="table-link danger">
