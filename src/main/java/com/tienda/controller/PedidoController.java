@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tienda.model.Entities.DetallePedido;
 import com.tienda.model.Entities.Pedido;
 import com.tienda.model.Entities.Usuario;
 import com.tienda.model.Entities.Valoracion;
@@ -108,6 +109,16 @@ public class PedidoController {
 		vs.addValoracion(valoracion);
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("/del/detail/{id}")
+	public String borrarLinea(Model model, @PathVariable("id") int id) {
+		
+		DetallePedido dp = (DetallePedido) dps.getDetallePedidoById(id);
+		int idPedido = dp.getIdPedido();
+		dps.deleteDetallePedido(id);
+		
+		return "redirect:/pedido/details/" + idPedido;
 	}
 	
 	@GetMapping("/details/{id}")

@@ -53,4 +53,8 @@ public class UsuarioService {
 		
 		repository.save(user);
 	}
+	
+	public void updateUsuario(Usuario user) {
+		repository.save(user);
+	}
 }

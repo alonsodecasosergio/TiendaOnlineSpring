@@ -22,5 +22,14 @@ public class DetallePedidoService {
 		
 		return repository.findByIdPedido(id);
 	}
+	
+	public void deleteDetallePedido(int id) {
+		
+		repository.deleteById(id);
+	}
+	
+	public DetallePedido getDetallePedidoById(int id) {
+		return repository.findById(id);
+	}
 
 }
