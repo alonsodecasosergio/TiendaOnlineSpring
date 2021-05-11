@@ -15,6 +15,7 @@ import java.util.Date;
 import org.apache.commons.codec.binary.Base64;
 
 import com.google.gson.Gson;
+import com.tienda.model.Entities.Producto;
 import com.tienda.model.Entities.Provincia;
 
 public class UtilService {
@@ -78,5 +79,9 @@ public class UtilService {
 
         conn.disconnect();
 		return provincias;
+	}
+	
+	public static void exportarProductos(ArrayList<Producto> productos) {
+		
 	}
 }

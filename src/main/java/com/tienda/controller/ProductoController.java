@@ -105,4 +105,10 @@ public class ProductoController {
 		
 		return "productos/new";
 	}
+	
+	@GetMapping("/export")
+	public String exportar(Model model) {
+		
+		return "redirect:/producto/listar";
+	}
 }
