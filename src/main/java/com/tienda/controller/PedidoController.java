@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tienda.model.Entities.Pedido;
 import com.tienda.model.Entities.Usuario;
+import com.tienda.model.Entities.Valoracion;
 import com.tienda.service.DetallePedidoService;
 import com.tienda.service.PedidoService;
 import com.tienda.service.ProductoService;
@@ -94,6 +96,18 @@ public class PedidoController {
 		model.addAttribute("producto", producServi.getProducto(id));
 		
 		return "productos/valoracion";
+	}
+	
+	@GetMapping("/assess/valorar/{id}")
+	public String guardarValoracion(HttpSession sesion, Model model, @PathVariable("id") int id, @RequestParam int puntuacion, @RequestParam String comentario) {
+		
+		Usuario user = (Usuario) sesion.getAttribute("usuario");
+		
+		Valoracion valoracion = new Valoracion(id, user.getId() ,puntuacion, comentario);
+		
+		vs.addValoracion(valoracion);
+		
+		return "redirect:/";
 	}
 	
 	@GetMapping("/details/{id}")

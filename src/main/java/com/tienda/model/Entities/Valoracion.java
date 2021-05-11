@@ -14,7 +14,7 @@ public class Valoracion {
 	@GeneratedValue
 	private int id;
 	
-	@Column(name = "id_productos")
+	@Column(name = "id_producto")
 	private int idProducto;
 	
 	@Column(name = "id_usuario")

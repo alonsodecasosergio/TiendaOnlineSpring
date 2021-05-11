@@ -14,11 +14,11 @@
 	  <h1 class="display-3">Valoración </h1>
 	  <hr style="width:70%;" class="container">
 	  <h1 class="display-6" th:text="${producto.nombre}">Nombre producto</h1>
-	  <form style="margin-bottom:3%;" th:action="@{/producto/prince}" method="get">
+	  <form style="margin-bottom:3%;" th:action="@{/pedido/assess/valorar/{id} (id=${producto.id})}" method="get">
 	        <label class="label" for="price-min">Puntuación</label>
 	      <div data-role="rangeslider">
-	        <input type="range" name="precio" id="precio" value="0" min="0" max="5">
-	        <span name="precio" id="valorPrecio">0</span>
+	        <input type="range" name="puntuacion" id="puntuacion" value="0" min="0" max="5">
+	        <span name="puntuacionText" id="puntuacionText">0</span>
 	        <br>
 	        <label style="margin-top:1%;" class="label">Comentario</label>
 	        <br>
@@ -37,12 +37,12 @@
 	
 	  function inicio()
 	  {
-	    document.getElementById('precio').addEventListener('change',cambioPrecio,false);
+	    document.getElementById('puntuacion').addEventListener('change',cambioPrecio,false);
 	  }
 	
 	  function cambioPrecio()
 	  {    
-	    document.getElementById('valorPrecio').innerHTML=document.getElementById('precio').value;
+	    document.getElementById('puntuacionText').innerHTML=document.getElementById('puntuacion').value;
 	  }
 	</script>
 	</body>
