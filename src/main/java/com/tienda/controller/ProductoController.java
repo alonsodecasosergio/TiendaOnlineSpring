@@ -115,4 +115,12 @@ public class ProductoController {
 		
 		return "redirect:/producto/listar";
 	}
+	
+	@GetMapping("/import")
+	public String importar(Model model) {
+		
+		ps.importarProductos();
+		
+		return "redirect:/producto/listar";
+	}
 }

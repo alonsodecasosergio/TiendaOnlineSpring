@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 import com.tienda.model.Entities.Producto;
 import com.tienda.model.Entities.Provincia;
 
+import jxl.Cell;
+import jxl.Sheet;
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -112,6 +114,8 @@ public class UtilService {
             sheet.addCell(label);   
             label = new Label(8, 0, "Impuesto");
             sheet.addCell(label);
+            label = new Label(9, 0, "Imagen");
+            sheet.addCell(label);
             
             for(int i = 0, j = 1; i < productos.size(); i++, j++) {
             	
@@ -143,6 +147,9 @@ public class UtilService {
                 
                 number = new jxl.write.Number(8,j, producto.getImpuesto());
                 sheet.addCell(number);
+                
+                labelProducto = new jxl.write.Label(9,j, producto.getImagen());
+                sheet.addCell(labelProducto);
             }  
                
             //add defined all cell above to case.   
@@ -152,5 +159,50 @@ public class UtilService {
         } catch (Exception e) {   
             e.printStackTrace();   
         }
+	}
+	
+	public static ArrayList<Producto> importarProductos(File fichero) {
+		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		
+		try {
+            Workbook book = Workbook.getWorkbook(fichero);  
+            Sheet sheet = book.getSheet(0);  
+            
+            for(int i = 1; i <= sheet.getRows(); i++) {
+            	
+            	Producto producto = new Producto();
+            	
+            	Cell cell = sheet.getCell(0, i);
+            	System.out.println(cell.getContents());
+            	producto.setIdCategoria(Integer.parseInt(cell.getContents()));
+                
+                cell = sheet.getCell(1, i);   
+                producto.setNombre(cell.getContents());
+                
+                cell = sheet.getCell(2, i);  
+                producto.setDescripcion(cell.getContents());
+                
+                cell = sheet.getCell(3, i);  
+                producto.setPrecio(Double.parseDouble(cell.getContents()));
+                
+                cell = sheet.getCell(4, i);   
+                producto.setStock(Integer.parseInt(cell.getContents()));
+                
+                cell = sheet.getCell(5, i);   
+                producto.setImpuesto(Float.parseFloat(cell.getContents()));
+                
+                cell = sheet.getCell(6, i);  
+                producto.setImagen(cell.getContents());
+                
+                productos.add(producto);
+            }    
+            
+            book.close();   
+        } catch (Exception e) {   
+            e.printStackTrace();   
+        }
+		
+		return productos;
 	}
 }

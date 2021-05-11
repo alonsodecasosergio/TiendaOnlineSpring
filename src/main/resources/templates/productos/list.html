@@ -22,6 +22,9 @@
 		                    
 		                    <a th:href="@{/producto/new}"><button style="margin:2%;" class="btn btn-success">Añadir</button></a>
 		                    <a th:href="@{/producto/export}"><button class="btn btn-outline-success">Exportar</button></a>
+		                    <a th:if="${session.usuario.id == 1}" th:href="@{/producto/import}"><button class="btn btn-outline-success">Importar</button></a>
+		                    
+		                    
 		                    <hr>
 		                        <table class="table user-list table-striped">
 		                            <thead>
@@ -75,7 +78,7 @@
 		                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 		                                            </span>
 		                                        </a>
-		                                        <a th:href="@{/producto/del/{id}/{ruta}(id=${producto.id})}" class="table-link danger">
+		                                        <a th:href="@{/producto/del/{id}(id=${producto.id})}" class="table-link danger">
 		                                            <span class="fa-stack">
 		                                                <i class="fa fa-square fa-stack-2x"></i>
 		                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>

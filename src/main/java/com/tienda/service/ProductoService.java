@@ -1,7 +1,11 @@
 package com.tienda.service;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,5 +51,12 @@ public class ProductoService {
 	public void exportarProductos(ArrayList<Producto> productos) {
 		
 		UtilService.exportarProductos(productos);
+	}
+	
+	public void importarProductos() {
+		
+		File f = new File("C:\\Users\\Formacion\\Desktop\\ficheros\\listadoProductosImportar.xls");
+		
+		repository.saveAll(UtilService.importarProductos(f));
 	}
 }
