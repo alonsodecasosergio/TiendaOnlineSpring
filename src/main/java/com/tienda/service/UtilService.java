@@ -1,6 +1,7 @@
 package com.tienda.service;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -17,6 +18,11 @@ import org.apache.commons.codec.binary.Base64;
 import com.google.gson.Gson;
 import com.tienda.model.Entities.Producto;
 import com.tienda.model.Entities.Provincia;
+
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
 public class UtilService {
 	
@@ -83,5 +89,68 @@ public class UtilService {
 	
 	public static void exportarProductos(ArrayList<Producto> productos) {
 		
+		try {    
+            WritableWorkbook book = Workbook.createWorkbook(new File("./ficheros/ListaProductos.xls"));   
+               
+            WritableSheet sheet = book.createSheet("Sheet_1", 0);   
+                 
+            Label label = new Label(0, 0, "id");      
+            sheet.addCell(label);   
+            label = new Label(0, 0, "id Categoria");
+            sheet.addCell(label);   
+            label = new Label(0, 0, "Nombre");
+            sheet.addCell(label);   
+            label = new Label(0, 0, "Descripcion");
+            sheet.addCell(label);   
+            label = new Label(0, 0, "Precio");
+            sheet.addCell(label);   
+            label = new Label(0, 0, "Stock");
+            sheet.addCell(label);   
+            label = new Label(0, 0, "Fecha Alta");
+            sheet.addCell(label);   
+            label = new Label(0, 0, "Fecha Baja");
+            sheet.addCell(label);   
+            label = new Label(0, 0, "Impuesto");
+            sheet.addCell(label);
+            
+            for(int i = 0, j = 1; i < productos.size(); i++, j++) {
+            	
+            	Producto producto = productos.get(i);
+            	
+            	jxl.write.Number number = new jxl.write.Number(j, 0, producto.getId());
+                sheet.addCell(number);
+                
+                number = new jxl.write.Number(j, 1, producto.getIdCategoria());
+                sheet.addCell(number); 
+                
+                jxl.write.Label labelProducto = new jxl.write.Label(j, 2, producto.getNombre());
+                sheet.addCell(labelProducto); 
+                
+                labelProducto = new jxl.write.Label(j, 3, producto.getDescripcion());
+                sheet.addCell(labelProducto);
+                
+                number = new jxl.write.Number(j, 4, producto.getPrecio());
+                sheet.addCell(number); 
+                
+                number = new jxl.write.Number(j, 5, producto.getStock());
+                sheet.addCell(number); 
+                
+                labelProducto = new jxl.write.Label(j, 6, producto.getFechaAlta().toString());
+                sheet.addCell(labelProducto);
+                
+                labelProducto = new jxl.write.Label(j, 7, producto.getFechaBaja().toString());
+                sheet.addCell(labelProducto);
+                
+                number = new jxl.write.Number(j, 8, producto.getImpuesto());
+                sheet.addCell(number);
+            }  
+               
+            //add defined all cell above to case.   
+            book.write();   
+            //close file case.   
+            book.close();   
+        } catch (Exception e) {   
+            e.printStackTrace();   
+        }
 	}
 }

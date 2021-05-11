@@ -1,5 +1,6 @@
 package com.tienda.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.tienda.model.Entities.Producto;
 import com.tienda.service.CategoriaService;
 import com.tienda.service.ProductoService;
 import com.tienda.service.UsuarioService;
+import com.tienda.service.UtilService;
 import com.tienda.service.ValoracionService;
 
 @Controller
@@ -108,6 +110,8 @@ public class ProductoController {
 	
 	@GetMapping("/export")
 	public String exportar(Model model) {
+		
+		ps.exportarProductos((ArrayList<Producto>) ps.getAll());
 		
 		return "redirect:/producto/listar";
 	}

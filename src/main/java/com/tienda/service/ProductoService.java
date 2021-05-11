@@ -1,6 +1,7 @@
 package com.tienda.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,10 @@ public class ProductoService {
 	public Iterable<Producto> getProductosPrecioMax(double precio){
 		
 		return repository.findByPrecioMaximo(precio);
+	}
+	
+	public void exportarProductos(ArrayList<Producto> productos) {
+		
+		UtilService.exportarProductos(productos);
 	}
 }
