@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lista Usuarios</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/list.css}" rel="stylesheet">
+		<head th:include="./utils/head.html"></head>
+	</head>
+	<body>		
+	<div th:include="./utils/header.html"></div>	
+	
+		<!-- TABLAAA -->
+		
+		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+		<div class="container bootstrap snippets bootdey">
+		    <div class="row">
+		        <div class="col-lg-12">
+		            <div class="no-header clearfix">
+		                <div class="main-box-body clearfix">
+		                    <div class="table-responsive">
+		                    
+		                    <hr>
+		                        <table class="table user-list table-striped">
+		                            <thead>
+		                                <tr>
+		                                <th class="text-center"><span>Nombre</span></th>
+		                                <th class="text-center"><span>Valor</span></th>
+		                                <th>&nbsp;</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody class="text-center">
+		                                <tr th:each="dato : ${configuraciones}">
+		                                    <td class="text-center">
+		                                        <span class="label" th:text="${dato.clave}">Nombre</span>
+		                                    </td>
+		                                    <td>
+		                                        <a th:text="${dato.valor}">Valor</a>
+		                                    </td>
+		                                    <td style="width: 10%;">
+		                                        <a th:href="@{/}" class="table-link text-info">
+		                                            <span class="fa-stack">
+		                                                <i class="fa fa-square fa-stack-2x"></i>
+		                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+		                                            </span>
+		                                        </a>
+		                                    </td>
+		                                </tr>
+		                            </tbody>
+		                        </table>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<footer th:include="./utils/footer.html"></footer>
+	</body>
+</html>
