@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tienda.model.Entities.Configuracion;
 import com.tienda.model.Entities.DetallePedido;
 import com.tienda.model.Entities.Pedido;
 import com.tienda.model.Entities.Usuario;
 import com.tienda.model.Entities.Valoracion;
+import com.tienda.service.ConfiguracionService;
 import com.tienda.service.DetallePedidoService;
 import com.tienda.service.PedidoService;
 import com.tienda.service.ProductoService;
@@ -35,6 +37,8 @@ public class PedidoController {
 	private ProductoService producServi;
 	@Autowired
 	private ValoracionService vs;
+	@Autowired
+	private ConfiguracionService cs;
 	
 	@GetMapping("/listar")
 	public String listar(Model model) {
@@ -84,9 +88,7 @@ public class PedidoController {
 		
 		Pedido pedido = ps.getPedido(id);
 		
-		pedido.setEstado("Enviado");
-		
-		ps.addPedido(pedido);
+		ps.pedidoEnviado(pedido);
 		
 		return "redirect:/pedido/listar";
 	}
@@ -129,5 +131,13 @@ public class PedidoController {
 		model.addAttribute("productos", producServi.getAll());
 		
 		return "pedidos/listDetails";
+	}
+	
+	@GetMapping("/invoice/{id}")
+	public String factura(Model model, @PathVariable("id") int id) {
+		
+		ps.crearFactura(id);
+		
+		return "redirect:/pedido/details/"+id;
 	}
 }

@@ -16,4 +16,12 @@ public class ConfiguracionService {
 		
 		return repository.findAll();
 	}
+	
+	public Configuracion getByClave(String clave) {
+		return repository.findByClave(clave);
+	}
+	
+	public void addConfig(Configuracion config) {
+		repository.save(config);
+	}
 }
