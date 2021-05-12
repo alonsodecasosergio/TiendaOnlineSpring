@@ -20,6 +20,7 @@
 		            <div class="no-header clearfix">
 		                <div class="main-box-body clearfix">
 		                    <div class="table-responsive">
+		                    <h1 style="margin-top:2%;" class="display-3 text-center">Detalles de pedido</h1>
 		                     <a th:if="${pedido.estado == 'Enviado'}" th:href="@{/pedido/invoice/{id} (id=${pedido.id})}"><button style="margin:2%;" class="btn btn-outline-success">Imprimir factura</button></a>
 		                     
 		                    <hr>
