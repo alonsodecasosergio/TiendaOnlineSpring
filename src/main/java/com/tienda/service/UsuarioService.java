@@ -21,6 +21,10 @@ public class UsuarioService {
 		return repository.findById(id);
 	}
 	
+	public void deleteById(int id) {
+		repository.deleteById(id);
+	}
+	
 	public Usuario getUsuario(String email) {
 		return repository.findByEmail(email);
 	}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Tienda Online | Sergio alonso</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<head th:include="./utils/head.html"></head>
+	<link rel="stylesheet" th:href="@{/css/registrar.css}">
+</head>
+<body>
+	<div th:include="./utils/header.html"></div>
+	<div style="background-color:#eee;" id="contenedor"  class="page-wrapper p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title row" th:if="${usuario.id>0}">Modificar Usuario</h2>
+                    <h2 class="title row" th:unless="${usuario.id>0}">Nuevo Usuario</h2>
+                    <form th:action="${usuario.id !=0} ? @{/usuario/new/submit} : @{/usuario/edit/submit}"  th:object="${usuario}" method="post">
+                    	<input type="hidden" name="id" th:if="${usuario!=null}" th:value="${usuario.id}">
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    	<div th:if="${session.usuario.rol == 1}">
+                                    		<label class="label">Rol</label>
+                                    		<select class="input--style-4" id="select" name="rol" required>
+                                    			<option th:each="rol : ${roles}" th:value="${rol.id}" th:text="${rol.rol}" th:selected="${rol.id == usuario.rol}">Opcion</option>
+                                    		</select>
+                                    	</div>
+                                    	<div th:if="${session.usuario.rol == 2}">
+                                    		<label class="label">Rol</label>
+                                    		<select class="input--style-4" id="select" name="rol" required>
+                                    			<option th:each="rol : ${roles}" th:if="${rol.id == 3}" th:value="${rol.id}" th:text="${rol.rol}" th:selected="${rol.id == usuario.rol}">Opcion</option>
+                                    		</select>
+                                    	</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Nombre</label>
+                                    <input class="input--style-4" type="text" name="nombre"  th:if="${usuario!=null}" th:value="${usuario.nombre}">
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="row row-space">
+                        	<div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Primer Apellido</label>
+                                    <input class="input--style-4" type="text" name="apellido1"  th:if="${usuario!=null}" th:value="${usuario.apellido1}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Segundo Apellido</label>
+                                    <input class="input--style-4" type="text" name="apellido2"  th:if="${usuario!=null}" th:value="${usuario.apellido2}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="text" name="email" required=""  th:if="${usuario!=null}" th:value="${usuario.email}">  
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Clave</label>
+                                    <input class="input--style-4" type="text" name="clave" required=""  th:if="${usuario!=null}" th:value="${usuario.clave}">
+                                </div>                         
+                        </div>
+                        <div class="row row-space">
+                        	<div class="col">
+                                <div class="input-group">
+                                    <label class="label">Direccion</label>
+                                    <input class="input--style-4" type="text" name="direccion"  th:if="${usuario!=null}" th:value="${usuario.direccion}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                           
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Localidad</label>
+                                    <input class="input--style-4" type="text" name="localidad"  th:if="${usuario!=null}" th:value="${usuario.localidad}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Provincia</label>
+                                    <input class="input--style-4" type="text" name="provincia"  th:if="${usuario!=null}" th:value="${usuario.provincia}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Telefono</label>
+                                    <input class="input--style-4" type="text" name="telefono"  th:if="${usuario!=null}" th:value="${usuario.telefono}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">DNI</label>
+                                    <input class="input--style-4" type="text" name="dni"  th:if="${usuario!=null}" th:value="${usuario.dni}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit" >Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:include="./utils/footer.html"></footer>
+</body>
+</html>

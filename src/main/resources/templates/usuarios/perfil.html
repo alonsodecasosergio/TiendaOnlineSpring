@@ -11,6 +11,8 @@
 </head>
 <body>
 	<div th:include="./utils/header.html"></div>
+	
+	<form th:action="@{/usuario/perfil/submit}"  th:object="${usuario}" method="post">
 	<div style="margin-top:3%;" class="container">
 	<div class="row gutters">
 	<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -89,14 +91,14 @@
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="zIp">Clave</label>
-						<input type="text" name="clave" class="form-control" id="zIp" placeholder="Introduzca su clave"  th:value="${usuario.clave}">
+						<input type="text" name="clave" class="form-control" id="zIp" placeholder="Introduzca su clave"  th:value="${usuario.clave}"> 
 					</div>
 				</div>
 			</div>
 			<div style="margin-top:2%;" class="row gutters">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="text-right">
-						<button type="button" id="submit" name="submit" class="btn btn-primary">Guardar</button>
+						<button type="submit" id="submit" name="submit" class="btn btn-primary">Guardar</button>
 					</div>
 				</div>
 			</div>
@@ -105,6 +107,7 @@
 	</div>
 	</div>
 	</div>
+	</form>
 	<footer th:include="./utils/footer.html"></footer>
 </body>
 </html>

@@ -7,12 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tienda.model.Entities.Categoria;
 import com.tienda.model.Entities.Usuario;
 import com.tienda.service.RolService;
 import com.tienda.service.UsuarioService;
+import com.tienda.service.UtilService;
 
 
 @Controller
@@ -24,16 +27,46 @@ public class UsuarioController {
 	@Autowired
 	private RolService rs;
 	
-	@PostMapping("/alta")
-	public String alta() {
+	@GetMapping("/edit/{id}")
+	public String edit(Model model, @PathVariable("id") int id) {
 		
-		return "";
+		model.addAttribute("roles", rs.getAll());
+		model.addAttribute("usuario", us.getUsuario(id));
+		
+		return "usuarios/new";
 	}
 	
-	@PostMapping("/baja")
-	public String baja() {
+	@GetMapping("/del/{id}")
+	public String delete(Model model, @PathVariable("id") int id) {
 		
-		return "";
+		us.deleteById(id);
+		
+		return "redirect:/usuario/listar";
+	}
+	
+	@GetMapping("/new")
+	public String nuevo(Model model) {
+		
+		model.addAttribute("roles", rs.getAll());
+		model.addAttribute("usuario", new Usuario());
+		
+		return "usuarios/new";
+	}
+	
+	@PostMapping("/edit/submit")
+	public String validar(Model model, @ModelAttribute Usuario user) {
+		
+		us.updateUsuario(user);
+		
+		return "redirect:/usuario/listar";
+	}
+	
+	@PostMapping("/new/submit")
+	public String validarNuevo(Model model, @ModelAttribute Usuario user) {
+		
+		us.addUsuario(user);
+		
+		return "redirect:/usuario/listar";
 	}
 	
 	@GetMapping("/listar")
@@ -49,7 +82,9 @@ public class UsuarioController {
 	public String perfil(HttpSession sesion,Model model) {
 		
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
-		model.addAttribute("usuario", user);
+		Usuario userPerfil = us.getUsuario(user.getId());
+		userPerfil.setClave(UtilService.desencryptedPassword(userPerfil.getClave()));
+		model.addAttribute("usuario", userPerfil);
 		
 		return "usuarios/perfil";
 	}
@@ -57,8 +92,7 @@ public class UsuarioController {
 	@PostMapping("/perfil/submit")
 	public String guardarPerfil(Model model, @ModelAttribute Usuario usuario) {
 		
-		us.updateUsuario(usuario);
-		System.out.println(usuario.toString());
+		us.addUsuario(usuario);
 		
 		return "redirect:/usuario/perfil";
 	}
