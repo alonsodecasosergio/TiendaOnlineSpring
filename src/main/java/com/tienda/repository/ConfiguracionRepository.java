@@ -6,4 +6,5 @@ import com.tienda.model.Entities.Configuracion;
 
 public interface ConfiguracionRepository extends JpaRepository<Configuracion, Integer>{
 	Configuracion findByClave(String clave);
+	Configuracion findById(int id);
 }

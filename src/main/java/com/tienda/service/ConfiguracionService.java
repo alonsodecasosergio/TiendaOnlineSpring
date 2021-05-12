@@ -24,4 +24,8 @@ public class ConfiguracionService {
 	public void addConfig(Configuracion config) {
 		repository.save(config);
 	}
+	
+	public Configuracion getConfigById(int id) {
+		return repository.findById(id);
+	}
 }
