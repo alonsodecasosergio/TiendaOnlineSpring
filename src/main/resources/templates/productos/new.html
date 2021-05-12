@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div th:include="./utils/header.html"></div>
-	<div id="contenedor"  class="page-wrapper p-t-130 p-b-100 font-poppins">
+	<div style="background-color:#eee;" id="contenedor"  class="page-wrapper p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
@@ -32,7 +32,10 @@
                                     <input class="input--style-4" type="text" name="nombre"  th:if="${producto!=null}" th:value="${producto.nombre}">
                                 </div>
                             </div>
-                            <div class="col-6">
+                        
+                        </div>
+                        <div class="row row-space">
+                        	<div class="col">
                                 <div class="input-group">
                                     <label class="label">Descripción</label>
                                     <input class="input--style-4" type="text" name="descripcion"  th:if="${producto!=null}" th:value="${producto.descripcion}">
@@ -40,32 +43,27 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-4">
+                            <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Precio</label>
-                                    <div class="input-group-icon">
-                                        <input class="input--style-4" type="number" name="precio" required=""  th:if="${producto!=null}" th:value="${producto.precio}">
-                                    </div>
+                                    <input class="input--style-4" type="number" name="precio" required=""  th:if="${producto!=null}" th:value="${producto.precio}">  
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Stock</label>
-                                    <div class="input-group-icon">
-                                        <input class="input--style-4" type="number" name="stock" required=""  th:if="${producto!=null}" th:value="${producto.stock}">
-                                    </div>
-                                </div>
-                           </div>
-                           
+                                    <input class="input--style-4" type="number" name="stock" required=""  th:if="${producto!=null}" th:value="${producto.stock}">
+                                </div>                         
                         </div>
                         <div class="row row-space">
-                            <div class="col-2">
+                           </div>
+                            <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Impuesto</label>
                                     <input class="input--style-4" type="number" name="impuesto"  th:if="${producto!=null}" th:value="${producto.impuesto}">
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Imagen</label>
                                     <input class="input--style-4" type="text" name="imagen"  th:if="${producto!=null}" th:value="${producto.imagen}">
@@ -73,7 +71,7 @@
                             </div>
                         </div>
                         <div>
-                            <button style="width:100%;" class="btn btn--radius-2 btn--blue btn-lg" type="submit"  th:if="${producto!=null}" th:value="Modificar">Añadir</button>
+                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${producto!=null}" th:value="Modificar">Añadir</button>
                         </div>
                     </form>
                 </div>
