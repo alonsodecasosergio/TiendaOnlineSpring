@@ -13,23 +13,20 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title row" th:if="${producto.id>0}">Modificar Producto</h2>
-                    <h2 class="title row" th:unless="${producto.id>0}">Nuevo Producto</h2>
-                    <form th:action="@{/configuracion/new/submit}"  th:object="${configuracion}" method="post">
-                    	<input type="hidden" name="id" th:if="${configuracion!=null}" th:value="${configuracion.id}">
-                    	<input type="hidden" name="id" th:if="${configuracion!=null}" th:value="${configuracion.tipo}">
-                    	<input type="hidden" name="id" th:if="${configuracion!=null}" th:value="${configuracion.clave}">
-                        </div>
+                    <h2 class="title row" th:text="'Modificar ' + ${configuracion.clave}">Modificar</h2>
+                    <form th:action="@{/configuracion/edit/submit}"  th:object="${configuracion}" method="post">                    	
+                        <input type="hidden" name="id" th:if="${configuracion!=null}" th:value="${configuracion.id}">
+                    	<input type="hidden" name="tipo" th:if="${configuracion!=null}" th:value="${configuracion.tipo}">
+                    	<input type="hidden" name="clave" th:if="${configuracion!=null}" th:value="${configuracion.clave}">
                         <div class="row row-space">
                         	<div class="col">
-                                <div class="input-group">
-                                    <label class="label">Descripción</label>
-                                    <input class="input--style-4" type="text" name="descripcion"  th:if="${producto!=null}" th:value="${producto.descripcion}">
+                                <div style="witdh:20%;" class="input-group">
+                                    <input class="input--style-4" type="text" name="valor"  th:if="${configuracion!=null}" th:value="${configuracion.valor}">
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${producto!=null}" th:value="Modificar">Añadir</button>
+                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${configuracion!=null}" th:value="Modificar">Añadir</button>
                         </div>
                     </form>
                 </div>
