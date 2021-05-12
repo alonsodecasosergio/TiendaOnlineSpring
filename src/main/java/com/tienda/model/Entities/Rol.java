@@ -1,5 +1,6 @@
 package com.tienda.model.Entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ public class Rol implements java.io.Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Column(name = "rol")
 	private String rol;
 
 	public Rol() {

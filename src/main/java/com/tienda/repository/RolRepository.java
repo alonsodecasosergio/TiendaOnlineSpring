@@ -6,5 +6,5 @@ import com.tienda.model.Entities.Rol;
 
 
 public interface RolRepository extends JpaRepository<Rol, Integer>{
-
+	Rol findById(int id);
 }

@@ -25,7 +25,15 @@ public class CategoriaController {
 		
 		model.addAttribute("categoria", cs.getCategoriaById(id));
 		
-		return "categoria/new";
+		return "categorias/new";
+	}
+	
+	@GetMapping("/del/{id}")
+	public String delete(Model model, @PathVariable("id") int id) {
+		
+		cs.deleteCategoria(id);
+		
+		return "redirect:/categoria/listar";
 	}
 	
 	@GetMapping("/new")
@@ -33,7 +41,7 @@ public class CategoriaController {
 		
 		model.addAttribute("categoria", new Categoria());
 		
-		return "categoria/new";
+		return "categorias/new";
 	}
 	
 	@PostMapping("/edit/submit")

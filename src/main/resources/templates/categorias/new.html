@@ -13,7 +13,8 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title row" th:text="'Modificar ' + ${categoria.nombre}">Modificar</h2>
+                    <h2 class="title row" th:if="${categoria.nombre!=null}" th:text="'Modificar ' + ${categoria.nombre}"></h2>
+                    <h2 class="title row" th:if="${categoria.nombre==null}" th:text="'Añadir categoría'"></h2>
                     <form th:action="@{/categoria/edit/submit}"  th:object="${categoria}" method="post">                    	
                         <input type="hidden" name="id" th:if="${categoria!=null}" th:value="${categoria.id}">
                         <div class="row row-space">
@@ -31,7 +32,7 @@
                             </div>
                         </div>
                         <div>
-                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${configuracion!=null}" th:value="Modificar">Añadir</button>
+                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${categoria!=null}" th:value="Modificar">Añadir</button>
                         </div>
                     </form>
                 </div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Tienda Online | Sergio alonso</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<head th:include="./utils/head.html"></head>
+	<link rel="stylesheet" th:href="@{/css/registrar.css}">
+</head>
+<body>
+	<div th:include="./utils/header.html"></div>
+	<div style="background-color:#eee;" id="contenedor"  class="page-wrapper p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title row" th:if="${roles.rol!=null}" th:text="'Modificar ' + ${roles.rol}"></h2>
+                    <h2 class="title row" th:if="${roles.rol==null}" th:text="'Añadir categoría'"></h2>
+                    <form th:action="@{/rol/edit/submit}" method="post" th:object="${roles}">                    	
+                        <input type="text" name="id" th:if="${roles.id!=null}" th:value="${roles.id}">
+                        <div class="row row-space">
+                            <div class="col">
+                                <div style="witdh:20%;" class="input-group">
+                                    <input class="input--style-4" type="text" name="rol"  th:if="${roles!=null}" th:value="${roles.rol}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${roles!=null}" th:value="Modificar">Añadir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>	
+    <footer th:include="./utils/footer.html"></footer>
+</body>
+</html>

@@ -16,4 +16,17 @@ public class RolService {
 		
 		return repository.findAll();
 	}
+	
+	public Rol getById(int id) {
+		return repository.findById(id);
+	}
+	
+	public void deleteRol(int id) {
+		repository.deleteById(id);
+	}
+	
+	public void addRol(Rol rol) {
+		repository.save(rol);
+	}
+	
 }
