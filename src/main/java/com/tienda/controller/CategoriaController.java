@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tienda.model.Entities.Categoria;
+import com.tienda.model.Entities.Configuracion;
 import com.tienda.service.CategoriaService;
 
 @Controller
@@ -16,16 +20,28 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService cs;
 	
-	@PostMapping("/alta")
-	public String alta() {
+	@GetMapping("/edit/{id}")
+	public String edit(Model model, @PathVariable("id") int id) {
 		
-		return "";
+		model.addAttribute("categoria", cs.getCategoriaById(id));
+		
+		return "categoria/new";
 	}
 	
-	@PostMapping("/baja")
-	public String baja() {
+	@GetMapping("/new")
+	public String nuevo(Model model) {
 		
-		return "";
+		model.addAttribute("categoria", new Categoria());
+		
+		return "categoria/new";
+	}
+	
+	@PostMapping("/edit/submit")
+	public String validar(Model model, @ModelAttribute Categoria categoria) {
+		
+		cs.addCategoria(categoria);
+		
+		return "redirect:/categoria/listar";
 	}
 	
 	@GetMapping("/listar")

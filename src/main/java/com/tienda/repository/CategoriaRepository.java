@@ -6,5 +6,5 @@ import com.tienda.model.Entities.Categoria;
 
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
-
+	Categoria findById(int id);
 }

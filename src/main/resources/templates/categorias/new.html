@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Tienda Online | Sergio alonso</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<head th:include="./utils/head.html"></head>
+	<link rel="stylesheet" th:href="@{/css/registrar.css}">
+</head>
+<body>
+	<div th:include="./utils/header.html"></div>
+	<div style="background-color:#eee;" id="contenedor"  class="page-wrapper p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title row" th:text="'Modificar ' + ${categoria.nombre}">Modificar</h2>
+                    <form th:action="@{/categoria/edit/submit}"  th:object="${categoria}" method="post">                    	
+                        <input type="hidden" name="id" th:if="${categoria!=null}" th:value="${categoria.id}">
+                        <div class="row row-space">
+                        	<div class="col-6">
+                        		<label class="label">Nombre</label>
+                                <div style="witdh:20%;" class="input-group">
+                                    <input class="input--style-4" type="text" name="nombre"  th:if="${categoria!=null}" th:value="${categoria.nombre}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                        		<label class="label">Descripcion</label>
+                                <div style="witdh:20%;" class="input-group">
+                                    <input class="input--style-4" type="text" name="descripcion"  th:if="${categoria!=null}" th:value="${categoria.descripcion}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${configuracion!=null}" th:value="Modificar">Añadir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:include="./utils/footer.html"></footer>
+</body>
+</html>

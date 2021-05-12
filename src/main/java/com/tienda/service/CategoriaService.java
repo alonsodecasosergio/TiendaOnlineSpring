@@ -20,5 +20,17 @@ public class CategoriaService {
 		
 	}
 	
+	public Categoria getCategoriaById(int id) {
+		
+		return repository.findById(id);
+	}
+	
+	public void addCategoria(Categoria categoria) {
+		repository.save(categoria);
+	}
+	
+	public void deleteCategoria(int id) {
+		repository.deleteById(id);
+	}
 
 }
