@@ -205,9 +205,4 @@ public class UtilService {
 		
 		return productos;
 	}
-	
-	public static void main(String[] args) {
-		
-		System.out.println(desencryptedPassword("c2VyZ2lv"));
-	}
 }
