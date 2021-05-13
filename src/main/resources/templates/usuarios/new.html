@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h2 class="title row" th:if="${usuario.id>0}">Modificar Usuario</h2>
                     <h2 class="title row" th:unless="${usuario.id>0}">Nuevo Usuario</h2>
-                    <form th:action="${usuario.id !=0} ? @{/usuario/new/submit} : @{/usuario/edit/submit}"  th:object="${usuario}" method="post">
+                    <form th:action="${usuario.id!=null} ? @{/usuario/edit/submit} : @{/usuario/new/submit}"  th:object="${usuario}" method="post">
                     	<input type="hidden" name="id" th:if="${usuario!=null}" th:value="${usuario.id}">
                         <div class="row row-space">
                             <div class="col-6">
