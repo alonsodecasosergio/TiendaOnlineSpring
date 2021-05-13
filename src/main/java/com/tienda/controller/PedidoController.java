@@ -118,7 +118,7 @@ public class PedidoController {
 		
 		DetallePedido dp = (DetallePedido) dps.getDetallePedidoById(id);
 		int idPedido = dp.getIdPedido();
-		dps.deleteDetallePedido(id);
+		dps.deleteDetallePedido(id, idPedido);
 		
 		return "redirect:/pedido/details/" + idPedido;
 	}

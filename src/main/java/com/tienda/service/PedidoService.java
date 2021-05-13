@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,7 +66,7 @@ public class PedidoService {
 		return repository.findById(id);
 	}
 	
-	public void crearPedido(Usuario user, ArrayList<Producto> productos, String pago) {
+	public void crearPedido(Usuario user, ArrayList<Producto> productos, String pago, float descuento) {
 		
 		Pedido pedido = new Pedido();
 		
@@ -89,6 +90,12 @@ public class PedidoService {
 			
 			total += producto.getPrecio();
 		}
+		
+		descuento = (100 - descuento)/100;
+		total = total * descuento;
+		
+		total = Math.round(total * 100) / 100d;
+		
 		
 		pedido.setTotal(total);
 		addPedido(pedido);

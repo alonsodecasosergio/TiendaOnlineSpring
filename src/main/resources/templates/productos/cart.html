@@ -86,6 +86,10 @@
 	                <select class="form-control" name="pago">
 	                	<option th:each="metodo : ${metodoPago}" th:value="${metodo.metodoPago}" th:text="${metodo.metodoPago}">Metodo Pago</option>
 	                </select>
+	                <label class="text-muted font-weight-normal">Descuentos</label>
+	                <select class="form-control" name="descuento">
+	                	<option th:each="descuento : ${descuentos}" th:value="${descuento.id}" th:text="${descuento.codigo}">Metodo Pago</option>
+	                </select>
 	              </div>
 	              <div class="mt-4">
 	                <a th:href="@{/}"><button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Volver a la tienda</button></a>

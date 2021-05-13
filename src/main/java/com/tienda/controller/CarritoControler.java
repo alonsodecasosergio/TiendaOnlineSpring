@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tienda.model.Entities.Descuento;
 import com.tienda.model.Entities.Producto;
 import com.tienda.model.Entities.Usuario;
 import com.tienda.service.CarritoService;
+import com.tienda.service.DescuentoService;
 import com.tienda.service.MetodoPagoService;
 import com.tienda.service.PedidoService;
 import com.tienda.service.ProductoService;
@@ -34,6 +36,8 @@ public class CarritoControler {
 	private CarritoService cs;
 	@Autowired
 	private MetodoPagoService mps;
+	@Autowired
+	private DescuentoService ds;
 	
 	@GetMapping("/view")
 	public String listar(HttpSession sesion, Model model) {
@@ -45,6 +49,7 @@ public class CarritoControler {
 		}
 		model.addAttribute("total", cs.total( (ArrayList<Producto>) sesion.getAttribute("carrito")) + " €");
 		model.addAttribute("metodoPago", mps.getAll());
+		model.addAttribute("descuentos", ds.getAll());
 		
 		return "productos/cart";
 	}
@@ -95,15 +100,16 @@ public class CarritoControler {
 	}
 	
 	@GetMapping("/order")
-	public String pedido(HttpSession sesion, Model model, @RequestParam String pago) {
+	public String pedido(HttpSession sesion, Model model, @RequestParam String pago, @RequestParam int descuento) {
 		
 		
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
 		if(user != null) {
 			
 			ArrayList<Producto> carrito = (ArrayList<Producto>) sesion.getAttribute("carrito");
+			Descuento desc = ds.getById(descuento);
 			
-			pedSer.crearPedido(user, carrito, pago);
+			pedSer.crearPedido(user, carrito, pago, desc.getDescuento());
 			
 			sesion.setAttribute("carrito", new ArrayList<Producto>());
 			
