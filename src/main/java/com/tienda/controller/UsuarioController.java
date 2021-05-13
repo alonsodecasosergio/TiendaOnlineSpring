@@ -164,7 +164,10 @@ public class UsuarioController {
 		for(int i = 0; i < valoraciones.size(); i++) {
 			
 			Producto produc = (Producto) productoService.getProducto(valoraciones.get(i).getIdProducto());
-			productosMejorValorados.add(produc);
+			if(!productosMejorValorados.contains(produc)) {
+
+				productosMejorValorados.add(produc);
+			}
 		}
 		
 		model.addAttribute("productos", productosMejorValorados);
