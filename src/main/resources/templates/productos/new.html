@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h2 class="title row" th:if="${producto.id>0}">Modificar Producto</h2>
                     <h2 class="title row" th:unless="${producto.id>0}">Nuevo Producto</h2>
-                    <form th:action="@{/producto/new/submit}"  th:object="${Producto}" method="post">
+                    <form enctype="multipart/form-data" th:action="@{/producto/new/submit}"  th:object="${Producto}" method="post">
                     	<input type="hidden" name="id" th:if="${producto!=null}" th:value="${producto.id}">
                         <div class="row row-space">
                             <div class="col-6">
@@ -65,8 +65,9 @@
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <label class="label">Imagen</label>
-                                    <input class="input--style-4" type="text" name="imagen"  th:if="${producto!=null}" th:value="${producto.imagen}">
+                                    <label class="label">Imagen</label></br>
+                                    <!-- <input class="input--style-4" type="text" name="imagen"  th:if="${producto!=null}" th:value="${producto.imagen}"> -->
+                                    <input id="file" name="file" type="file" placeholder="" th:if="${producto!=null}" th:value="${producto.imagen}" required="">
                                 </div>
                             </div>
                         </div>

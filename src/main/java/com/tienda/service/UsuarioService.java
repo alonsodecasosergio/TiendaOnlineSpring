@@ -65,8 +65,13 @@ public class UsuarioService {
 		
 		user.setClave(UtilService.encryptedPassword(user.getClave()));
 		
+		if(user.getId() == null) {
+
+			enviarEmail(user.getEmail());
+			
+		}
+		
 		repository.save(user);
-		enviarEmail(user.getEmail());
 	}
 	
 	public void updateUsuario(Usuario user) {

@@ -32,8 +32,11 @@
 		        <!-- Top Bar -->
 		        <div class="top_bar">
 		            <div class="container">
-		                <div class="row">
-		                    <div class="col d-flex flex-row-reverse">
+		                <div class="row justify-content-between">
+		                	<div class="col-4">
+		                		<a style=" color:#fff; font-size:40px; font-family: 'Brush Script MT', cursive;" th:href="@{/}">AloShop</a>
+		                	</div>
+		                    <div class="col-4">
 		                            <div th:if="${session.usuario == null}" class="top_bar_user">
 		                                <div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
 		                                <div><a th:href="@{/login/registrar}">Registrar</a></div>

@@ -1,5 +1,9 @@
 package com.tienda.controller;
 
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tienda.model.Entities.Producto;
 import com.tienda.service.CategoriaService;
@@ -43,7 +48,26 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/new/submit")
-	public String addSubmit(Model model, @ModelAttribute Producto producto) {
+	public String addSubmit(Model model, @ModelAttribute Producto producto, @RequestParam("file") MultipartFile file) {
+		
+		try {
+			if(!file.isEmpty()) {
+				producto.setImagen(file.getOriginalFilename());
+				
+				ClassLoader loader = Thread.currentThread().getContextClassLoader();
+			    URL appResourceURL = loader.getResource("static");
+			    String dbConfigFileRoute = appResourceURL.getPath();
+			    dbConfigFileRoute = dbConfigFileRoute.substring(1, dbConfigFileRoute.length());
+
+			    String ruta = dbConfigFileRoute + "/img/" + file.getOriginalFilename();
+			    
+			    Files.copy(file.getInputStream(), Paths.get(ruta));
+			    
+			}
+			} catch (IOException e) {
+				System.out.println(e);
+				//throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+			}
 		
 		ps.addProducto(producto);
 		

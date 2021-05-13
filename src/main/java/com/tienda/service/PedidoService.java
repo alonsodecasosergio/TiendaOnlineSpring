@@ -70,7 +70,7 @@ public class PedidoService {
 		return repository.findByEstado(estado);
 	}
 	
-	public void crearPedido(Usuario user, ArrayList<Producto> productos, String pago, float descuento) {
+	public void crearPedido(Usuario user, ArrayList<Producto> productos, String pago, float descuento, int[] cantidades) {
 		
 		Pedido pedido = new Pedido();
 		
@@ -88,7 +88,9 @@ public class PedidoService {
 			Producto producto = productos.get(i);
 			
 			DetallePedido linea = new DetallePedido(pedido.getId(),
-					producto.getId(), Float.parseFloat(producto.getPrecio().toString()), 1, producto.getImpuesto(), producto.getPrecio());
+					producto.getId(), Float.parseFloat(producto.getPrecio().toString()), cantidades[i], producto.getImpuesto(), (producto.getPrecio()*cantidades[i]));
+			
+			
 			
 			serviceDetalle.addDetallePedido(linea);
 			

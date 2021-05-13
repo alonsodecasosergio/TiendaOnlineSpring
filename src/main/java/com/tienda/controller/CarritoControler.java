@@ -100,7 +100,7 @@ public class CarritoControler {
 	}
 	
 	@GetMapping("/order")
-	public String pedido(HttpSession sesion, Model model, @RequestParam String pago, @RequestParam int descuento) {
+	public String pedido(HttpSession sesion, Model model, @RequestParam String pago, @RequestParam int descuento, @RequestParam int[] cantidades) {
 		
 		
 		Usuario user = (Usuario) sesion.getAttribute("usuario");
@@ -109,7 +109,7 @@ public class CarritoControler {
 			ArrayList<Producto> carrito = (ArrayList<Producto>) sesion.getAttribute("carrito");
 			Descuento desc = ds.getById(descuento);
 			
-			pedSer.crearPedido(user, carrito, pago, desc.getDescuento());
+			pedSer.crearPedido(user, carrito, pago, desc.getDescuento(), cantidades);
 			
 			sesion.setAttribute("carrito", new ArrayList<Producto>());
 			

@@ -36,12 +36,8 @@
                   </span>
               </div>
               <div class="m-bot15"> <strong>Precio : </strong> <span class="pro-price" th:text="${producto.precio + ' €'}"> 0.00€</span></div>
-              <div class="form-group">
-                  <label class="cantidad">Cantidad</label>
-                  <input type="quantiy" placeholder="1" class="form-control quantity">
-              </div>
               <p>
-                  <a th:href="@{/carrito/add/{id} (id=${producto.id})}"><button style="margin-top:3%;" class="btn btn-round btn-success" type="button"><i class="fa fa-shopping-cart"></i> Añadir al carrito</button></a>
+                  <a th:if="${producto.stock>0}" th:href="@{/carrito/add/{id} (id=${producto.id})}"><button style="margin-top:3%;" class="btn btn-round btn-success" type="button"><i class="fa fa-shopping-cart"></i> Añadir al carrito</button></a>
               </p>
           </div>
       </div>
