@@ -26,5 +26,10 @@ public class ValoracionService {
 		return repository.findByIdProducto(id);
 	}
 	
+	public Iterable<Valoracion> getByValoracion(int valoracion){
+		
+		return repository.findByValoracion(valoracion);
+	}
+	
 	
 }

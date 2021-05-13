@@ -1,6 +1,7 @@
 package com.tienda.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -16,10 +17,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tienda.model.Entities.Categoria;
+import com.tienda.model.Entities.Pedido;
+import com.tienda.model.Entities.Producto;
 import com.tienda.model.Entities.Usuario;
+import com.tienda.model.Entities.Valoracion;
+import com.tienda.service.PedidoService;
+import com.tienda.service.ProductoService;
 import com.tienda.service.RolService;
 import com.tienda.service.UsuarioService;
 import com.tienda.service.UtilService;
+import com.tienda.service.ValoracionService;
 
 
 @Controller
@@ -30,6 +37,12 @@ public class UsuarioController {
 	private UsuarioService us;
 	@Autowired
 	private RolService rs;
+	@Autowired
+	private PedidoService pedidoService;
+	@Autowired
+	private ValoracionService valoracionService;
+	@Autowired
+	private ProductoService productoService;
 	
 	@GetMapping("/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
@@ -123,5 +136,41 @@ public class UsuarioController {
 			
 			return "redirect:/usuario/perfil";
 		}
+	}
+	
+	@GetMapping("/stats")
+	public String estadisticas(Model model) {
+		
+		ArrayList<Pedido> enviados = (ArrayList<Pedido>) pedidoService.getPedidoByEstado("Enviado"); 
+		
+		model.addAttribute("pedidosEnviados", enviados.size());
+		
+		ArrayList<Pedido> pendientes = (ArrayList<Pedido>) pedidoService.getPedidoByEstado("Pendiente"); 
+		
+		model.addAttribute("pedidosPendiente", pendientes.size());
+		
+		ArrayList<Pedido> cancelados = (ArrayList<Pedido>) pedidoService.getPedidoByEstado("Cancelado"); 
+		
+		model.addAttribute("pedidosCancelados", cancelados.size());
+		
+		ArrayList<Pedido> porCancelar = (ArrayList<Pedido>) pedidoService.getPedidoByEstado("Pendiente Cancelar"); 
+		
+		model.addAttribute("pedidosPorCancelar", porCancelar.size());
+		
+		ArrayList<Valoracion> valoraciones = (ArrayList<Valoracion>) valoracionService.getByValoracion(5);
+		
+		ArrayList<Producto> productosMejorValorados = new ArrayList<Producto>();
+		
+		for(int i = 0; i < valoraciones.size(); i++) {
+			
+			Producto produc = (Producto) productoService.getProducto(valoraciones.get(i).getIdProducto());
+			productosMejorValorados.add(produc);
+		}
+		
+		model.addAttribute("productos", productosMejorValorados);
+		
+		
+		
+		return "usuarios/stats";
 	}
 }

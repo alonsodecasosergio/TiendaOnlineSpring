@@ -66,6 +66,10 @@ public class PedidoService {
 		return repository.findById(id);
 	}
 	
+	public Iterable<Pedido> getPedidoByEstado(String estado){
+		return repository.findByEstado(estado);
+	}
+	
 	public void crearPedido(Usuario user, ArrayList<Producto> productos, String pago, float descuento) {
 		
 		Pedido pedido = new Pedido();

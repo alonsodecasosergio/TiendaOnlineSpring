@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lista Usuarios</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/stats.css}" rel="stylesheet">
+		<head th:include="./utils/head.html"></head>
+	</head>
+	<body>		
+		<div th:include="./utils/header.html"></div>	
+			<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+			<div style="margin-top:4%;" class="container">
+			    <div class="row">
+			        <div class="col-md-4 col-xl-3">
+			            <div class="card bg-c-green order-card">
+			                <div class="card-block">
+			                    <h6 class="m-b-20">Pedidos enviado</h6>
+			                    <h2 class="text-right"><span th:text="${pedidosEnviados}"></span></h2>
+			                </div>
+			            </div>
+			        </div>
+			        
+			        <div class="col-md-4 col-xl-3">
+			            <div class="card bg-c-blue order-card">
+			                <div class="card-block">
+			                    <h6 class="m-b-20">Pedidos pendientes</h6>
+			                    <h2 class="text-right"><span th:text="${pedidosPendiente}"></span></h2>
+			                </div>
+			            </div>
+			        </div>
+			        
+			        <div class="col-md-4 col-xl-3">
+			            <div class="card bg-c-pink order-card">
+			                <div class="card-block">
+			                    <h6 class="m-b-20">Pedidos cancelados</h6>
+			                    <h2 class="text-right"><span th:text="${pedidosCancelados}"></span></h2>
+			                    <p class="m-b-0">Pedidos por cancelar<span class="f-right" th:text="${pedidosPorCancelar}"></span></p>
+			                </div>
+			            </div>
+			        </div>
+			        
+			        <div class="col-md-4 col-xl-3">
+			            <div class="card bg-c-yellow order-card">
+			                <div class="card-block">
+			                    <h6 class="m-b-20">Productos con 5 estreñas</h6>
+			                    <h2 class="text-right"><span class="f-right" th:text="${pedidosTop}"></span></h2>
+			                    <p th:each="producto : ${productos}" class="m-b-0" th:text="${producto.nombre}">Nombre producto<span class="f-right"></span></p>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+			</div>		
+		<footer th:include="./utils/footer.html"></footer>
+	</body>
+</html>
