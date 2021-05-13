@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Entity
 @Table(name = "categorias")
 public class Categoria implements java.io.Serializable {

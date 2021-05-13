@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Entity
 @Table(name = "roles")
 public class Rol implements java.io.Serializable {

@@ -1,6 +1,10 @@
 package com.tienda.model.Entities;
 
-
+/**
+ * 
+ * @author Sergio
+ *
+ */
 public class Provincia {
 	
 	private int id;

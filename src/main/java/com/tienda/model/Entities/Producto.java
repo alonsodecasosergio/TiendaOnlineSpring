@@ -7,6 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Entity
 @Table(name = "productos")
 public class Producto implements java.io.Serializable {

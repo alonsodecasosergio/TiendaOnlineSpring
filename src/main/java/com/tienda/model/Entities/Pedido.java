@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Entity
 @Table(name = "pedidos")
 public class Pedido {
