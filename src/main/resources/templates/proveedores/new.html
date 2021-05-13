@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Tienda Online | Sergio alonso</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<head th:include="./utils/head.html"></head>
+	<link rel="stylesheet" th:href="@{/css/registrar.css}">
+</head>
+<body>
+	<div th:include="./utils/header.html"></div>
+	<div style="background-color:#eee;" id="contenedor"  class="page-wrapper p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title row" th:if="${proveedor.id>0}">Modificar Proveedor</h2>
+                    <h2 class="title row" th:unless="${proveedor.id>0}">Nuevo Proveedor</h2>
+                    <form th:action="@{/proveedor/edit/submit}"  th:object="${proveedor}" method="post">
+                    	<input type="hidden" name="id" th:if="${proveedor!=null}" th:value="${proveedor.id}">
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Nombre</label>
+                                    <input class="input--style-4" type="text" name="nombre"  th:if="${proveedor!=null}" th:value="${proveedor.nombre}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Dirección</label>
+                                    <input class="input--style-4" type="text" name="direccion"  th:if="${proveedor!=null}" th:value="${proveedor.direccion}">
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="row row-space">
+                        	<div class="col">
+                                <div class="input-group">
+                                    <label class="label">Localidad</label>
+                                    <input class="input--style-4" type="text" name="localidad"  th:if="${proveedor!=null}" th:value="${proveedor.localidad}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Provincia</label>
+                                    <input class="input--style-4" type="text" name="provincia" required=""  th:if="${proveedor!=null}" th:value="${proveedor.provincia}">  
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Telefono</label>
+                                    <input class="input--style-4" type="text" name="telefono" required=""  th:if="${proveedor!=null}" th:value="${proveedor.telefono}">
+                                </div>                         
+                        </div>
+                        <div class="row row-space">
+                           </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">CIF</label>
+                                    <input class="input--style-4" type="text" name="cif"  th:if="${proveedor!=null}" th:value="${proveedor.cif}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email"  th:if="${proveedor!=null}" th:value="${proveedor.email}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button style="width:100%;" class="btn btn--radius-2 btn-outline-primary btn-lg" type="submit"  th:if="${proveedor!=null}" th:value="Modificar">Añadir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:include="./utils/footer.html"></footer>
+</body>
+</html>
