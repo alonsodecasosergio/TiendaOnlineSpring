@@ -64,12 +64,7 @@ public class UsuarioService {
 	public void addUsuario(Usuario user) {
 		
 		user.setClave(UtilService.encryptedPassword(user.getClave()));
-		
-		if(user.getId() == null) {
-
-			enviarEmail(user.getEmail());
-			
-		}
+		enviarEmail(user.getEmail());
 		
 		repository.save(user);
 	}
