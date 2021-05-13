@@ -13,6 +13,11 @@ import com.tienda.model.Entities.Categoria;
 import com.tienda.model.Entities.Rol;
 import com.tienda.service.RolService;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/rol")
 public class RolController {
@@ -20,6 +25,12 @@ public class RolController {
 	@Autowired
 	private RolService rs;
 	
+	/**
+	 * Editado de un rol
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
 		
@@ -28,6 +39,12 @@ public class RolController {
 		return "roles/new";
 	}
 	
+	/**
+	 * Borrado de un rol
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/del/{id}")
 	public String delete(Model model, @PathVariable("id") int id) {
 		
@@ -36,6 +53,11 @@ public class RolController {
 		return "redirect:/rol/listar";
 	}
 	
+	/**
+	 * Añadido de un rol
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/new")
 	public String nuevo(Model model) {
 		
@@ -44,6 +66,12 @@ public class RolController {
 		return "roles/new";
 	}
 	
+	/**
+	 * Añadir el cambio o nuevo rol
+	 * @param model
+	 * @param rol
+	 * @return
+	 */
 	@PostMapping("/edit/submit")
 	public String validar(Model model, @ModelAttribute Rol rol) {
 		
@@ -54,6 +82,11 @@ public class RolController {
 		return "redirect:/rol/listar";
 	}
 	
+	/**
+	 * Listar los roles
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		

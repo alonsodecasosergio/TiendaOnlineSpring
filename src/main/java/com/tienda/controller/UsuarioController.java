@@ -28,7 +28,11 @@ import com.tienda.service.UsuarioService;
 import com.tienda.service.UtilService;
 import com.tienda.service.ValoracionService;
 
-
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -44,6 +48,12 @@ public class UsuarioController {
 	@Autowired
 	private ProductoService productoService;
 	
+	/**
+	 * Editado de un usuario
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
 		
@@ -53,6 +63,12 @@ public class UsuarioController {
 		return "usuarios/new";
 	}
 	
+	/**
+	 * Borrado de un usuario
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/del/{id}")
 	public String delete(Model model, @PathVariable("id") int id) {
 		
@@ -61,6 +77,11 @@ public class UsuarioController {
 		return "redirect:/usuario/listar";
 	}
 	
+	/**
+	 * Añadido de un usuario
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/new")
 	public String nuevo(Model model) {
 		
@@ -70,6 +91,13 @@ public class UsuarioController {
 		return "usuarios/new";
 	}
 	
+	/**
+	 * Validar la edicion de un usuario
+	 * @param model
+	 * @param usuario
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("/edit/submit")
 	public String validar(Model model, @Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
@@ -87,6 +115,13 @@ public class UsuarioController {
 		}
 	}
 	
+	/**
+	 * Validar el añadido de un nuevo usuario
+	 * @param model
+	 * @param usuario
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("/new/submit")
 	public String validarNuevo(Model model, @Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
@@ -103,6 +138,11 @@ public class UsuarioController {
 		}
 	}
 	
+	/**
+	 * Listar los usuarios
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		
@@ -112,6 +152,12 @@ public class UsuarioController {
 		return "usuarios/list";
 	}
 	
+	/**
+	 * Perfil de un usuario
+	 * @param sesion
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/perfil")
 	public String perfil(HttpSession sesion,Model model) {
 		
@@ -123,6 +169,13 @@ public class UsuarioController {
 		return "usuarios/perfil";
 	}
 	
+	/**
+	 * Validacion de los cambios del perfil de usuario
+	 * @param model
+	 * @param usuario
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("/perfil/submit")
 	public String guardarPerfil(Model model, @Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
@@ -138,6 +191,11 @@ public class UsuarioController {
 		}
 	}
 	
+	/**
+	 * Estadisticas para los administradores
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/stats")
 	public String estadisticas(Model model) {
 		

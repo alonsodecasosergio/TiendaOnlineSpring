@@ -23,7 +23,11 @@ import com.tienda.service.MetodoPagoService;
 import com.tienda.service.PedidoService;
 import com.tienda.service.ProductoService;
 
-
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/carrito")
 public class CarritoControler {
@@ -39,6 +43,12 @@ public class CarritoControler {
 	@Autowired
 	private DescuentoService ds;
 	
+	/**
+	 * Vista para visualizar la lista del carrito
+	 * @param sesion
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/view")
 	public String listar(HttpSession sesion, Model model) {
 		
@@ -54,6 +64,13 @@ public class CarritoControler {
 		return "productos/cart";
 	}
 	
+	/**
+	 * Añadido de un producto al carrito
+	 * @param sesion
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/add/{id}")
 	public String add(HttpSession sesion, Model model,@PathVariable("id") int id) {
 		
@@ -79,6 +96,13 @@ public class CarritoControler {
 		return "redirect:/";
 	}
 	
+	/**
+	 * Borrado de un producto del carrito
+	 * @param sesion
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/del/{id}")
 	public String delete(HttpSession sesion, Model model, @PathVariable("id") int id) {
 		
@@ -99,6 +123,15 @@ public class CarritoControler {
 		return "redirect:/carrito/view";
 	}
 	
+	/**
+	 * Creacion del pedido a partir del carrito
+	 * @param sesion
+	 * @param model
+	 * @param pago
+	 * @param descuento
+	 * @param cantidades
+	 * @return
+	 */
 	@GetMapping("/order")
 	public String pedido(HttpSession sesion, Model model, @RequestParam String pago, @RequestParam int descuento, @RequestParam int[] cantidades) {
 		

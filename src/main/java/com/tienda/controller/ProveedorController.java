@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.tienda.model.Entities.Categoria;
 import com.tienda.model.Entities.Proveedor;
 import com.tienda.service.ProveedorService;
-
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/proveedor")
 public class ProveedorController {
@@ -20,6 +24,11 @@ public class ProveedorController {
 	@Autowired
 	private ProveedorService ps;
 	
+	/**
+	 * Listar proveedores
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		
@@ -28,6 +37,12 @@ public class ProveedorController {
 		return "proveedores/list";
 	}
 	
+	/**
+	 * Editar un proveedor
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
 		
@@ -36,6 +51,12 @@ public class ProveedorController {
 		return "proveedores/new";
 	}
 	
+	/**
+	 * Borrar un proveedor
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/del/{id}")
 	public String delete(Model model, @PathVariable("id") int id) {
 		
@@ -44,6 +65,11 @@ public class ProveedorController {
 		return "redirect:/proveedor/listar";
 	}
 	
+	/**
+	 * Crear un nuevo proveedor
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/new")
 	public String nuevo(Model model) {
 		
@@ -52,6 +78,12 @@ public class ProveedorController {
 		return "proveedores/new";
 	}
 	
+	/**
+	 * Validar el cambio o añadido de proveedor
+	 * @param model
+	 * @param proveedor
+	 * @return
+	 */
 	@PostMapping("/edit/submit")
 	public String validar(Model model, @ModelAttribute Proveedor proveedor) {
 		

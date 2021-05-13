@@ -25,6 +25,11 @@ import com.tienda.service.UsuarioService;
 import com.tienda.service.UtilService;
 import com.tienda.service.ValoracionService;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/producto")
 public class ProductoController {
@@ -38,6 +43,11 @@ public class ProductoController {
 	@Autowired
 	private ValoracionService vs;
 	
+	/**
+	 * Nuevo producto
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/new")
 	public String add(Model model) {
 		
@@ -47,6 +57,13 @@ public class ProductoController {
 		return "productos/new";
 	}
 	
+	/**
+	 * Añadido del nuevo producto
+	 * @param model
+	 * @param producto
+	 * @param file
+	 * @return
+	 */
 	@PostMapping("/new/submit")
 	public String addSubmit(Model model, @ModelAttribute Producto producto, @RequestParam("file") MultipartFile file) {
 		
@@ -74,6 +91,11 @@ public class ProductoController {
 		return "redirect:/producto/listar";
 	}
 	
+	/**
+	 * Lista de productos
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		
@@ -83,6 +105,12 @@ public class ProductoController {
 		return "productos/list";
 	}
 	
+	/**
+	 * Detalles d eun producto
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/details/{id}")
 	public String details(Model model,@PathVariable("id") int id){
 		
@@ -96,6 +124,12 @@ public class ProductoController {
 		return "productos/details";
 	}
 	
+	/**
+	 * Lista de productos segun la categoria
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/category/{id}")
 	public String category(Model model,@PathVariable("id") int id){
 		
@@ -105,6 +139,12 @@ public class ProductoController {
 		return "index";
 	}
 	
+	/**
+	 * Lista de productos segun su precio maximo
+	 * @param model
+	 * @param precio
+	 * @return
+	 */
 	@GetMapping("/prince")
 	public String prince(Model model,  @RequestParam double precio) {
 		
@@ -114,6 +154,12 @@ public class ProductoController {
 		return "index";
 	}
 	
+	/**
+	 * Borrado de un producto
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/del/{id}")
 	public String delete(Model model, @PathVariable("id") int id) {
 		
@@ -122,6 +168,12 @@ public class ProductoController {
 		return "redirect:/producto/listar";
 	}
 	
+	/**
+	 * Editado de un productos
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String editar(Model model, @PathVariable("id") int id) {
 		
@@ -132,6 +184,11 @@ public class ProductoController {
 		return "productos/new";
 	}
 	
+	/**
+	 * Exportar la lista de productos
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/export")
 	public String exportar(Model model) {
 		
@@ -140,6 +197,11 @@ public class ProductoController {
 		return "redirect:/producto/listar";
 	}
 	
+	/**
+	 * Importar productos
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/import")
 	public String importar(Model model) {
 		

@@ -23,6 +23,11 @@ import com.tienda.service.ProductoService;
 import com.tienda.service.UsuarioService;
 import com.tienda.service.ValoracionService;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/pedido")
 public class PedidoController {
@@ -40,6 +45,11 @@ public class PedidoController {
 	@Autowired
 	private ConfiguracionService cs;
 	
+	/**
+	 * Listado de los pedidos
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		
@@ -49,6 +59,12 @@ public class PedidoController {
 		return "pedidos/list";
 	}
 	
+	/**
+	 * Listado de los pedidos de un cliente
+	 * @param sesion
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar/client")
 	public String listarClient(HttpSession sesion, Model model) {
 		
@@ -59,6 +75,12 @@ public class PedidoController {
 		return "pedidos/listCliente";
 	}
 	
+	/**
+	 * Cancelar un pedido
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/cancel/{id}")
 	public String cancel(Model model,@PathVariable("id") int id) {
 		
@@ -71,6 +93,12 @@ public class PedidoController {
 		return "redirect:/pedido/listar";
 	}
 	
+	/**
+	 * Cancelar un pedido por parte de un cliente
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/cancelclient/{id}")
 	public String cancelClient(Model model,@PathVariable("id") int id) {
 		
@@ -83,6 +111,12 @@ public class PedidoController {
 		return "redirect:/pedido/listar/client";
 	}
 	
+	/**
+	 * Pedido enviado
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/send/{id}")
 	public String enviar(Model model,@PathVariable("id") int id) {
 		
@@ -93,6 +127,12 @@ public class PedidoController {
 		return "redirect:/pedido/listar";
 	}
 	
+	/**
+	 * Valoracion de un producto
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/assess/{id}")
 	public String valorar(Model model, @PathVariable("id") int id) {
 		
@@ -101,6 +141,15 @@ public class PedidoController {
 		return "productos/valoracion";
 	}
 	
+	/**
+	 * Guardar la valoracion
+	 * @param sesion
+	 * @param model
+	 * @param id
+	 * @param puntuacion
+	 * @param comentario
+	 * @return
+	 */
 	@GetMapping("/assess/valorar/{id}")
 	public String guardarValoracion(HttpSession sesion, Model model, @PathVariable("id") int id, @RequestParam int puntuacion, @RequestParam String comentario) {
 		
@@ -113,6 +162,12 @@ public class PedidoController {
 		return "redirect:/";
 	}
 	
+	/**
+	 * Eliminar un detalle de un pedido pendiente
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/del/detail/{id}")
 	public String borrarLinea(Model model, @PathVariable("id") int id) {
 		
@@ -123,6 +178,12 @@ public class PedidoController {
 		return "redirect:/pedido/details/" + idPedido;
 	}
 	
+	/**
+	 * Vista de los detalles de un pedido
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/details/{id}")
 	public String detalles(Model model, @PathVariable("id") int id) {
 		
@@ -133,6 +194,12 @@ public class PedidoController {
 		return "pedidos/listDetails";
 	}
 	
+	/**
+	 * Creacion de la factura de un pedido
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/invoice/{id}")
 	public String factura(Model model, @PathVariable("id") int id) {
 		

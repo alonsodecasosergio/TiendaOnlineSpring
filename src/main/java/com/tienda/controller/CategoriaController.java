@@ -13,6 +13,11 @@ import com.tienda.model.Entities.Categoria;
 import com.tienda.model.Entities.Configuracion;
 import com.tienda.service.CategoriaService;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaController {
@@ -20,6 +25,12 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService cs;
 	
+	/**
+	 * Edicion de la categoria
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
 		
@@ -28,6 +39,12 @@ public class CategoriaController {
 		return "categorias/new";
 	}
 	
+	/**
+	 * Borrado de una categoria
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/del/{id}")
 	public String delete(Model model, @PathVariable("id") int id) {
 		
@@ -36,6 +53,11 @@ public class CategoriaController {
 		return "redirect:/categoria/listar";
 	}
 	
+	/**
+	 * Añadido de una nueva categoria
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/new")
 	public String nuevo(Model model) {
 		
@@ -44,6 +66,12 @@ public class CategoriaController {
 		return "categorias/new";
 	}
 	
+	/**
+	 * Validacion al añadir una categoria
+	 * @param model
+	 * @param categoria
+	 * @return
+	 */
 	@PostMapping("/edit/submit")
 	public String validar(Model model, @ModelAttribute Categoria categoria) {
 		
@@ -52,6 +80,11 @@ public class CategoriaController {
 		return "redirect:/categoria/listar";
 	}
 	
+	/**
+	 * Listado de las categorias
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		

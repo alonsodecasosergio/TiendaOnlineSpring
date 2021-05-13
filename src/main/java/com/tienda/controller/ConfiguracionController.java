@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tienda.model.Entities.Configuracion;
 import com.tienda.service.ConfiguracionService;
-
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("/configuracion")
 public class ConfiguracionController {
@@ -19,6 +23,11 @@ public class ConfiguracionController {
 	@Autowired
 	private ConfiguracionService cs;
 	
+	/**
+	 * Listado de la configuracion
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		
@@ -27,6 +36,12 @@ public class ConfiguracionController {
 		return "configuracion/list";
 	}
 	
+	/**
+	 * Editado del valor de configuracion
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
 		
@@ -35,6 +50,12 @@ public class ConfiguracionController {
 		return "configuracion/new";
 	}
 	
+	/**
+	 * Añadido del cambio en la configuracion
+	 * @param model
+	 * @param config
+	 * @return
+	 */
 	@PostMapping("/edit/submit")
 	public String validar(Model model, @ModelAttribute Configuracion config) {
 		

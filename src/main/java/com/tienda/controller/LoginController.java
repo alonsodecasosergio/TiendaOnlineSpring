@@ -22,6 +22,11 @@ import com.tienda.service.OpcionMenuService;
 import com.tienda.service.UsuarioService;
 import com.tienda.service.UtilService;
 
+/**
+ * 
+ * @author Serbatic
+ *
+ */
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -32,12 +37,24 @@ public class LoginController {
 	@Autowired
 	private OpcionMenuService oms;
 	
+	/**
+	 * Envio al formulario de login
+	 * @return
+	 */
 	@GetMapping("/acceso")
 	public String acceso() {
 		
 		return "login/login";
 	}
 	
+	/**
+	 * Validacion del login
+	 * @param sesion
+	 * @param model
+	 * @param login
+	 * @param password
+	 * @return
+	 */
 	@PostMapping("/acceso/validar")
 	public String validarAcceso(HttpSession sesion, Model model, @RequestParam(required = true) String login, @RequestParam(required = true) String password) {
 		
@@ -59,6 +76,11 @@ public class LoginController {
 		
 	}
 	
+	/**
+	 * Envio al formulario de registro
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("registrar")
 	public String registrar(Model model) {
 		
@@ -73,6 +95,13 @@ public class LoginController {
 		return "login/registrar";
 	}
 	
+	/**
+	 * Validacion del formulario de registro
+	 * @param model
+	 * @param usuario
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("registrar/validar")
 	public String registrarValidar(Model model,@Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
@@ -108,6 +137,12 @@ public class LoginController {
 		
 	}
 	
+	/**
+	 * Cierre de la session
+	 * @param sesion
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/close")
 	public String cerrarSesion(HttpSession sesion, Model model) {
 		

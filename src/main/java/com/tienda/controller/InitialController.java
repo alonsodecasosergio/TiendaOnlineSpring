@@ -15,6 +15,11 @@ import com.tienda.model.Entities.Producto;
 import com.tienda.service.CategoriaService;
 import com.tienda.service.ProductoService;
 
+/**
+ * 
+ * @author Sergio
+ *
+ */
 @Controller
 @RequestMapping("")
 public class InitialController {
@@ -24,7 +29,12 @@ public class InitialController {
 	@Autowired
 	private CategoriaService cs;
 	
-
+	/**
+	 * Inicio de la aplicacion redirigiendo al index
+	 * @param sesion
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("")
 	public String alta(HttpSession sesion, Model model) {
 		
