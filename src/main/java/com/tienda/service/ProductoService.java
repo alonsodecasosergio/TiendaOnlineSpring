@@ -10,6 +10,7 @@ import javax.swing.JFileChooser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tienda.model.Entities.Configuracion;
 import com.tienda.model.Entities.Producto;
 import com.tienda.repository.ProductoRepository;
 
@@ -18,6 +19,8 @@ public class ProductoService {
 	
 	@Autowired
 	private ProductoRepository repository;
+	@Autowired
+	private ConfiguracionService configService;
 	
 	public Iterable<Producto> getAll() {
         return repository.findAll();
@@ -50,12 +53,18 @@ public class ProductoService {
 	
 	public void exportarProductos(ArrayList<Producto> productos) {
 		
-		UtilService.exportarProductos(productos);
+		Configuracion ruta = configService.getByClave("rutaArchivos");
+		Configuracion nombreFichero = configService.getByClave("ficheroExportar");
+		
+		UtilService.exportarProductos(productos, ruta.getValor(), nombreFichero.getValor());
 	}
 	
 	public void importarProductos() {
 		
-		File f = new File("C:\\Users\\Formacion\\Desktop\\ficheros\\listadoProductosImportar.xls");
+		Configuracion ruta = configService.getByClave("rutaArchivos");
+		Configuracion nombreFichero = configService.getByClave("ficheroImportar");
+		
+		File f = new File(ruta.getValor() + nombreFichero.getValor());
 		
 		repository.saveAll(UtilService.importarProductos(f));
 	}

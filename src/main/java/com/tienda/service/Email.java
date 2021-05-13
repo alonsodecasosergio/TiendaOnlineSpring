@@ -64,7 +64,9 @@ public class Email {
 			t.close();
 
 		} catch (AddressException ex) {
+			ex.printStackTrace();
 		} catch (MessagingException ex) {
+			ex.printStackTrace();
 		}
 
 	}

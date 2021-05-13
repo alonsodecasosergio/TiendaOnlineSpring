@@ -89,10 +89,10 @@ public class UtilService {
 		return provincias;
 	}
 	
-	public static void exportarProductos(ArrayList<Producto> productos) {
+	public static void exportarProductos(ArrayList<Producto> productos, String ruta, String nombre) {
 		
 		try {    
-            WritableWorkbook book = Workbook.createWorkbook(new File("C:\\Users\\Formacion\\Desktop\\ficheros\\listadoProductos.xls"));   
+            WritableWorkbook book = Workbook.createWorkbook(new File(ruta + nombre));   
                
             WritableSheet sheet = book.createSheet("Sheet_1", 0);   
                  
