@@ -14,24 +14,27 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title row">Registrar</h2>
-                    <form th:action="@{/login/registrar/validar}"  th:object="${Usuario}" method="post">
+                    <form th:action="@{/login/registrar/validar}"  th:object="${usuario}" method="post">
                         <div class="row row-space">
                             <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Nombre</label>
-                                    <input class="input--style-4" type="text" name="nombre" required="">
+                                    <input class="input--style-4" type="text" name="nombre"  th:field="*{nombre}" required="">
+                                    <span style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Errores</span>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Primer Apellido</label>
-                                    <input class="input--style-4" type="text" name="apellido1">
+                                    <input class="input--style-4" type="text" name="apellido1" th:field="*{apellido1}" required="">
+                                    <span style="color:red;" th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}">Errores</span>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Segundo Apellido</label>
-                                    <input class="input--style-4" type="text" name="apellido2">
+                                    <input class="input--style-4" type="text" name="apellido2" th:field="*{apellido2}" required="">
+                                    <span style="color:red;" th:if="${#fields.hasErrors('apellido2')}" th:errors="*{apellido2}">Errores</span>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +43,9 @@
                                 <div class="input-group">
                                     <label class="label">Email</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4" type="email" name="email" required="">
+                                        <input class="input--style-4" type="email" name="email" th:field="*{email}" required="">
+                                        <span style="color:red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Errores</span>
+                                        <span style="color:red;" th:if="${emailIncorrecto != null}" th:text="${emailIncorrecto}">Errores</span>
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +53,8 @@
                                 <div class="input-group">
                                     <label class="label">Clave</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4" type="password" name="clave" required="">
+                                        <input class="input--style-4" type="password" name="clave" th:field="*{clave}" required="">
+                                        <span style="color:red;" th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">Errores</span>
                                     </div>
                                 </div>
                            </div>
@@ -56,7 +62,8 @@
                                 <div class="input-group">
                                     <label class="label">Dirección</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4" type="text" name="direccion" required="">
+                                        <input class="input--style-4" type="text" name="direccion" th:field="*{direccion}" required="">
+                                        <span style="color:red;" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Errores</span>
                                     </div>
                                     </div>
                            </div>
@@ -65,13 +72,14 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Localidad</label>
-                                    <input class="input--style-4" type="text" name="localidad">
+                                    <input class="input--style-4" type="text" name="localidad" th:field="*{localidad}" required="">
+                                    <span style="color:red;" th:if="${#fields.hasErrors('localidad')}" th:errors="*{localidad}">Errores</span>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Provincia</label>
-		                                <select class="input--style-4" id="select" name="provincia" required>
+		                                <select class="input--style-4" id="select" name="provincia">
                                     		<option th:each="provincia : ${provincias}" th:value="${provincia}" th:text="${provincia}">aa</option>
                                     	</select>
                                 </div>
@@ -81,13 +89,15 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Telefono</label>
-                                    <input class="input--style-4" type="text" name="telefono">
+                                    <input class="input--style-4" type="number" name="telefono" th:field="*{telefono}" required="">
+                                    <span style="color:red;" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Errores</span>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">DNI</label>
-                                    <input class="input--style-4" type="text" name="dni">
+                                    <input class="input--style-4" type="text" name="dni" th:field="*{dni}" required="">
+                                    <span style="color:red;" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Errores</span>
                                 </div>
                             </div>
                         </div>

@@ -40,29 +40,33 @@
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="fullName">Nombre</label>
-						<input type="text" name="nombre" class="form-control" id="fullName" placeholder="Introduzca su nombre" th:value="${usuario.nombre}">
-						<input type="hidden" name="id" th:value="${usuario.id}">
-						<input type="hidden" name="rol" th:value="${usuario.rol}">
-						<input type="hidden" name="apellido1" th:value="${usuario.apellido1}">
-						<input type="hidden" name="apellido2" th:value="${usuario.apellido2}">
+						<input type="text" name="nombre" class="form-control" id="fullName" placeholder="Introduzca su nombre" th:value="${usuario.nombre}"  th:field="*{nombre}">
+						<span style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Errores</span>
+						<input type="hidden" name="id" th:value="${usuario.id}"  th:field="*{id}">
+						<input type="hidden" name="rol" th:value="${usuario.rol}"  th:field="*{rol}">
+						<input type="hidden" name="apellido1" th:value="${usuario.apellido1}"  th:field="*{apellido1}">
+						<input type="hidden" name="apellido2" th:value="${usuario.apellido2}"  th:field="*{apellido2}">
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="eMail">Email</label>
-						<input type="email" name="email" class="form-control" id="eMail" placeholder="Introduzca su email"  th:value="${usuario.email}">
+						<input type="email" name="email" class="form-control" id="eMail" placeholder="Introduzca su email"  th:value="${usuario.email}"  th:field="*{email}">
+						<span style="color:red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Errores</span>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="phone">Telefono</label>
-						<input type="text" name="telefono" class="form-control" id="phone" placeholder="Introduzca su telefono"  th:value="${usuario.telefono}">
+						<input type="text" name="telefono" class="form-control" id="phone" placeholder="Introduzca su telefono"  th:value="${usuario.telefono}"  th:field="*{telefono}">
+						<span style="color:red;" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Errores</span>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="website">DNI</label>
-						<input type="text" name="dni" class="form-control" id="website" placeholder="Introduzca su DNI"  th:value="${usuario.dni}">
+						<input type="text" name="dni" class="form-control" id="website" placeholder="Introduzca su DNI"  th:value="${usuario.dni}"  th:field="*{dni}">
+						<span style="color:red;" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Errores</span>
 					</div>
 				</div>
 			</div>
@@ -73,25 +77,29 @@
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="Street">Dirección</label>
-						<input type="text" name="direccion" class="form-control" id="Street" placeholder="Introduzca su direccion"  th:value="${usuario.direccion}">
+						<input type="text" name="direccion" class="form-control" id="Street" placeholder="Introduzca su direccion"  th:value="${usuario.direccion}"  th:field="*{direccion}">
+						<span style="color:red;" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Errores</span>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="ciTy">Localidad</label>
-						<input type="text" name="localidad" class="form-control" id="ciTy" placeholder="Introduzca su localidad"  th:value="${usuario.localidad}">
+						<input type="text" name="localidad" class="form-control" id="ciTy" placeholder="Introduzca su localidad"  th:value="${usuario.localidad}"  th:field="*{localidad}">
+						<span style="color:red;" th:if="${#fields.hasErrors('localidad')}" th:errors="*{localidad}">Errores</span>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="sTate">Provincia</label>
-						<input type="text" name="Provincia" class="form-control" id="sTate" placeholder="Introduzca su provincia"  th:value="${usuario.provincia}">
+						<input type="text" name="Provincia" class="form-control" id="sTate" placeholder="Introduzca su provincia"  th:value="${usuario.provincia}"  th:field="*{provincia}">
+						<span style="color:red;" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}">Errores</span>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 					<div class="form-group">
 						<label for="zIp">Clave</label>
-						<input type="text" name="clave" class="form-control" id="zIp" placeholder="Introduzca su clave"  th:value="${usuario.clave}"> 
+						<input type="text" name="clave" class="form-control" id="zIp" placeholder="Introduzca su clave"  th:value="${usuario.clave}"  th:field="*{clave}"> 
+						<span style="color:red;" th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">Errores</span>
 					</div>
 				</div>
 			</div>

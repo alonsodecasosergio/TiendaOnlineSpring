@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,12 +74,37 @@ public class LoginController {
 	}
 	
 	@PostMapping("registrar/validar")
-	public String registrarValidar(Model model, @ModelAttribute Usuario usuario) {
+	public String registrarValidar(Model model,@Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
-		usuario.setRol(3);
-		us.addUsuario(usuario);
-		
-		return "redirect:/login/acceso";
+		if(bindingResult.hasErrors()) {
+			try {
+				model.addAttribute("provincias", UtilService.getAllProvincias());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return "login/registrar";
+		}
+		else {
+			
+			if(us.getUsuario(usuario.getEmail()) == null) {
+				usuario.setRol(3);
+				us.addUsuario(usuario);
+				
+				return "redirect:/login/acceso";
+				
+			}else {
+				
+				model.addAttribute("emailIncorrecto", "El email ya esta en uso");
+				try {
+					model.addAttribute("provincias", UtilService.getAllProvincias());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return "login/registrar";
+			}
+		}
 		
 	}
 	

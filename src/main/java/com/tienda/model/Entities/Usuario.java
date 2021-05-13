@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuarios")
@@ -22,33 +25,44 @@ public class Usuario implements java.io.Serializable {
 	@Column(name="id_rol")
 	private int rol;
 	
+	@Email(message="Debe ser una dirección de correo electrónico con formato correcto")
+	@NotBlank(message="El email es obligatorio")
 	@Column(name = "email")
 	private String email;
 	
+	@NotBlank(message="La contraseña es obligatoria")
 	@Column(name = "clave")
 	private String clave;
 	
 	@Column(name = "nombre")
+	@NotBlank(message="El nombre es obligatorio")
 	private String nombre;
 	
+	@NotBlank(message="El apellido es obligatorio")
 	@Column(name = "apellido1")
 	private String apellido1;
 	
+	@NotBlank(message="El apellido es obligatorio")
 	@Column(name = "apellido2")
 	private String apellido2;
 	
+	@NotBlank(message="La direccion es obligatoria")
 	@Column(name = "direccion")
 	private String direccion;
 	
+	@NotBlank(message="La localidad es obligatoria")
 	@Column(name = "localidad")
 	private String localidad;
 	
 	@Column(name = "provincia")
 	private String provincia;
 	
+	@Size(min=9, max=9, message="El teléfono debe tener 9 dígitos")
+	@NotBlank(message="El telefono es obligatorio")
 	@Column(name = "telefono")
 	private String telefono;
 	
+	@NotBlank(message="El dni es obligatorio")
 	@Column(name = "dni")
 	private String dni;
 

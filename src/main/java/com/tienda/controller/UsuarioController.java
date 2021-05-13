@@ -1,10 +1,14 @@
 package com.tienda.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,19 +58,36 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/edit/submit")
-	public String validar(Model model, @ModelAttribute Usuario user) {
+	public String validar(Model model, @Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
-		us.updateUsuario(user);
 		
-		return "redirect:/usuario/listar";
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("roles", rs.getAll());
+			
+			return "usuarios/new";
+		}
+		else {
+			
+			us.updateUsuario(usuario);
+			
+			return "redirect:/usuario/listar";
+		}
 	}
 	
 	@PostMapping("/new/submit")
-	public String validarNuevo(Model model, @ModelAttribute Usuario user) {
+	public String validarNuevo(Model model, @Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
-		us.addUsuario(user);
-		
-		return "redirect:/usuario/listar";
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("roles", rs.getAll());
+			
+			return "usuarios/new";
+		}
+		else {
+			
+			us.addUsuario(usuario);
+			
+			return "redirect:/usuario/listar";
+		}
 	}
 	
 	@GetMapping("/listar")
@@ -90,10 +111,17 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/perfil/submit")
-	public String guardarPerfil(Model model, @ModelAttribute Usuario usuario) {
+	public String guardarPerfil(Model model, @Valid @ModelAttribute Usuario usuario,  BindingResult bindingResult) {
 		
-		us.addUsuario(usuario);
-		
-		return "redirect:/usuario/perfil";
+		if(bindingResult.hasErrors()) {
+			
+			return "usuarios/perfil";
+		}
+		else {
+			
+			us.addUsuario(usuario);
+			
+			return "redirect:/usuario/perfil";
+		}
 	}
 }
