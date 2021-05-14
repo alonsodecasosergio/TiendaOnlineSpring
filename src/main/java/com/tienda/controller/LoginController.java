@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,8 @@ import com.tienda.service.UtilService;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+	
+	private static final Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
 	@Autowired
 	private UsuarioService us;
@@ -64,6 +68,8 @@ public class LoginController {
 		if(user != null) {
 			
 			sesion.setAttribute("opcionesMenu", oms.getByIdRol(user.getRol()));
+			logger.debug("Acceso del usuario: " + user.getEmail());
+			
 			
 			return "redirect:/";
 			
