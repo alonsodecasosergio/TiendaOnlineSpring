@@ -1,3 +1,13 @@
 [2021-05-14 08:45:15] [ DEBUG] [LoginController:71] Acceso del usuario: sergio@gmail.com
 [2021-05-14 08:47:31] [ DEBUG] [LoginController:71] Acceso del usuario: sergio@gmail.com
 [2021-05-14 08:49:28] [ DEBUG] [LoginController:71] Acceso del usuario: admin@tiendaonline.es
+[2021-05-14 09:04:03] [ DEBUG] [LoginController:71] Acceso del usuario: admin@tiendaonline.es
+[2021-05-14 09:04:14] [ DEBUG] [LoginController:71] Acceso del usuario: admin@tiendaonline.es
+[2021-05-14 09:11:57] [ DEBUG] [LoginController:71] Acceso del usuario: sergio@gmail.com
+[2021-05-14 09:16:41] [ DEBUG] [LoginController:71] Acceso del usuario: admin@tiendaonline.es
+[2021-05-14 09:48:04] [ DEBUG] [LoginController:71] Acceso del usuario: admin@tiendaonline.es
+[2021-05-14 10:28:34] [ DEBUG] [LoginController:71] Acceso del usuario: alonsodecaso.sergio@gmail.com
+[2021-05-14 10:29:19] [ DEBUG] [LoginController:71] Acceso del usuario: gemma@gmail.com
+[2021-05-14 10:30:52] [ DEBUG] [LoginController:71] Acceso del usuario: diego@gmail.com
+[2021-05-14 10:33:36] [ DEBUG] [LoginController:71] Acceso del usuario: sergio@gmail.com
+[2021-05-14 10:35:06] [ DEBUG] [LoginController:71] Acceso del usuario: admin@tiendaonline.es
